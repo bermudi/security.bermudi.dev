@@ -32,9 +32,9 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Contact Us</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Contáctanos</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Get in touch with our security experts to discuss your needs.
+            Póngase en contacto con nuestros expertos en seguridad para discutir sus necesidades.
           </p>
         </motion.div>
 
@@ -44,26 +44,26 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
+            <h3 className="text-2xl font-semibold mb-6">Ponte en Contacto</h3>
             <div className="space-y-6">
               <div className="flex items-center">
                 <Mail className="w-6 h-6 text-blue-600 mr-4" />
                 <div>
-                  <h4 className="font-semibold">Email</h4>
+                  <h4 className="font-semibold">Correo Electrónico</h4>
                   <p className="text-gray-600">contact@secureguard.com</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <Phone className="w-6 h-6 text-blue-600 mr-4" />
                 <div>
-                  <h4 className="font-semibold">Phone</h4>
+                  <h4 className="font-semibold">Teléfono</h4>
                   <p className="text-gray-600">+1 (555) 123-4567</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <MapPin className="w-6 h-6 text-blue-600 mr-4" />
                 <div>
-                  <h4 className="font-semibold">Location</h4>
+                  <h4 className="font-semibold">Ubicación</h4>
                   <p className="text-gray-600">123 Security Ave, Cyber City, CS 12345</p>
                 </div>
               </div>
@@ -78,7 +78,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Name
+                  Nombre
                 </label>
                 <input
                   type="text"
@@ -92,7 +92,7 @@ const Contact = () => {
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
+                  Correo Electrónico
                 </label>
                 <input
                   type="email"
@@ -106,7 +106,7 @@ const Contact = () => {
               </div>
               <div>
                 <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                  Company
+                  Compañía
                 </label>
                 <input
                   type="text"
@@ -119,7 +119,7 @@ const Contact = () => {
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
+                  Mensaje
                 </label>
                 <textarea
                   id="message"
@@ -138,7 +138,7 @@ const Contact = () => {
                 className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
               >
                 <Send className="w-5 h-5 mr-2" />
-                Send Message
+                Enviar Mensaje
               </motion.button>
             </form>
           </motion.div>

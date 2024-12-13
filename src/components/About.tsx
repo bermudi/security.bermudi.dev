@@ -42,18 +42,17 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">About SecureGuard</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Acerca de SecureGuard</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            With over a decade of experience in cybersecurity, we've protected thousands
-            of businesses from evolving digital threats.
+            Con más de una década de experiencia en ciberseguridad, hemos protegido a miles de empresas de las amenazas digitales en evolución.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-          <StatCard icon={Shield} value="500+" label="Clients Protected" />
-          <StatCard icon={Users} value="50+" label="Security Experts" />
-          <StatCard icon={Award} value="99.9%" label="Success Rate" />
-          <StatCard icon={Building} value="15+" label="Years Experience" />
+          <StatCard icon={Shield} value="500+" label="Clientes Protegidos" />
+          <StatCard icon={Users} value="50+" label="Expertos en Seguridad" />
+          <StatCard icon={Award} value="99.9%" label="Tasa de Éxito" />
+          <StatCard icon={Building} value="15+" label="Años de Experiencia" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -64,7 +63,7 @@ const About = () => {
           >
             <img
               src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&q=80"
-              alt="Security Operations Center"
+              alt="Centro de Operaciones de Seguridad"
               className="rounded-lg shadow-lg"
             />
           </motion.div>
@@ -75,18 +74,17 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Why Choose SecureGuard?
+              ¿Por qué elegir SecureGuard?
             </h3>
             <p className="text-gray-600 mb-6">
-              We combine cutting-edge technology with expert human intelligence to deliver
-              comprehensive security solutions that protect your business 24/7.
+              Combinamos tecnología de vanguardia con inteligencia humana experta para ofrecer soluciones de seguridad integrales que protegen su negocio las 24 horas del día, los 7 días de la semana.
             </p>
             <ul className="space-y-4">
               {[
-                'Round-the-clock monitoring and threat detection',
-                'Customized security solutions for your business',
-                'Expert team of certified security professionals',
-                'Proactive threat hunting and vulnerability assessment',
+                'Monitoreo y detección de amenazas las 24 horas',
+                'Soluciones de seguridad personalizadas para su negocio',
+                'Equipo experto de profesionales de seguridad certificados',
+                'Búsqueda proactiva de amenazas y evaluación de vulnerabilidades',
               ].map((item, index) => (
                 <motion.li
                   key={index}

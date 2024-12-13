@@ -31,33 +31,33 @@ const Services = () => {
   const services = [
     {
       icon: Shield,
-      title: 'Threat Detection',
-      description: 'Advanced threat detection and prevention systems to protect your infrastructure.',
+      title: 'Detección de Amenazas',
+      description: 'Sistemas avanzados de detección y prevención de amenazas para proteger su infraestructura.',
     },
     {
       icon: Lock,
-      title: 'Data Protection',
-      description: 'Comprehensive data protection solutions with military-grade encryption.',
+      title: 'Protección de Datos',
+      description: 'Soluciones integrales de protección de datos con encriptación de grado militar.',
     },
     {
       icon: Server,
-      title: 'Network Security',
-      description: 'Secure network architecture design and implementation services.',
+      title: 'Seguridad de la Red',
+      description: 'Servicios de diseño e implementación de arquitectura de red segura.',
     },
     {
       icon: Cloud,
-      title: 'Cloud Security',
-      description: 'Cloud-native security solutions for modern infrastructure.',
+      title: 'Seguridad en la Nube',
+      description: 'Soluciones de seguridad nativas de la nube para infraestructuras modernas.',
     },
     {
       icon: Users,
-      title: 'Security Training',
-      description: 'Employee security awareness training and certification programs.',
+      title: 'Capacitación en Seguridad',
+      description: 'Programas de capacitación y certificación en concientización sobre seguridad para empleados.',
     },
     {
       icon: Terminal,
-      title: 'Penetration Testing',
-      description: 'Comprehensive security assessments and vulnerability testing.',
+      title: 'Pruebas de Penetración',
+      description: 'Evaluaciones de seguridad integrales y pruebas de vulnerabilidad.',
     },
   ];
 
@@ -70,10 +70,9 @@ const Services = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Nuestros Servicios</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive security solutions tailored to protect your business
-            in today's complex digital landscape.
+            Soluciones de seguridad integrales diseñadas para proteger su negocio en el complejo panorama digital actual.
           </p>
         </motion.div>
 

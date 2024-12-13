@@ -13,24 +13,24 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    title: 'Financial Institution Security Overhaul',
-    description: 'Implemented comprehensive security measures for a leading bank, protecting over $50B in assets.',
+    title: 'Reestructuración de la Seguridad de una Institución Financiera',
+    description: 'Implementamos medidas de seguridad integrales para un banco líder, protegiendo más de $50 mil millones en activos.',
     icon: Shield,
-    results: ['85% reduction in security incidents', '99.99% uptime maintained', 'Zero data breaches'],
+    results: ['Reducción del 85% en incidentes de seguridad', 'Se mantuvo un tiempo de actividad del 99.99%', 'Cero violaciones de datos'],
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80'
   },
   {
-    title: 'Healthcare Data Protection',
-    description: 'Secured patient data for a network of hospitals, ensuring HIPAA compliance.',
+    title: 'Protección de Datos en el Sector Salud',
+    description: 'Aseguramos los datos de pacientes para una red de hospitales, garantizando el cumplimiento de HIPAA.',
     icon: Lock,
-    results: ['100% HIPAA compliance achieved', 'Protected 1M+ patient records', 'Reduced audit time by 50%'],
+    results: ['Cumplimiento del 100% de HIPAA', 'Protección de más de 1 millón de registros de pacientes', 'Reducción del tiempo de auditoría en un 50%'],
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80'
   },
   {
-    title: 'Cloud Infrastructure Security',
-    description: 'Modernized cloud security for a Fortune 500 tech company.',
+    title: 'Seguridad de la Infraestructura en la Nube',
+    description: 'Modernizamos la seguridad en la nube para una empresa tecnológica Fortune 500.',
     icon: Server,
-    results: ['40% cost reduction', '90% faster threat detection', 'Zero downtime migration'],
+    results: ['Reducción de costos del 40%', 'Detección de amenazas un 90% más rápida', 'Migración sin tiempo de inactividad'],
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80'
   }
 ];
@@ -91,9 +91,9 @@ const CaseStudies = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Case Studies</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Casos de Estudio</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Real-world examples of how we've helped businesses strengthen their security posture.
+            Ejemplos del mundo real de cómo hemos ayudado a las empresas a fortalecer su postura de seguridad.
           </p>
         </motion.div>
 

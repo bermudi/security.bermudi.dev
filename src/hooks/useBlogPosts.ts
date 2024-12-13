@@ -9,11 +9,14 @@ export const useBlogPosts = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
+      console.log('Fetching posts...');
       try {
         const fetchedPosts = await getBlogPosts();
+        console.log('Fetched posts:', fetchedPosts);
         setPosts(fetchedPosts);
         setIsLoading(false);
       } catch (err) {
+        console.error('Error fetching posts:', err);
         setError(err instanceof Error ? err.message : 'Failed to fetch posts');
         setIsLoading(false);
       }
@@ -22,5 +25,6 @@ export const useBlogPosts = () => {
     fetchPosts();
   }, []);
 
+  console.log('useBlogPosts hook state:', { posts, isLoading, error });
   return { posts, isLoading, error };
 };

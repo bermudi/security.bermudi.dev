@@ -17,11 +17,11 @@ const Hero = () => {
           className="text-center"
         >
           <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6">
-            Securing Your Digital Future
+            Asegurando su Futuro Digital
           </h1>
           <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
-            Enterprise-grade cybersecurity solutions tailored to protect your business
-            in an ever-evolving digital landscape.
+            Soluciones de ciberseguridad de nivel empresarial diseñadas para proteger su negocio
+            en un panorama digital en constante evolución.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -30,14 +30,14 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
             >
-              Get Started
+              Comenzar
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
             >
-              Learn More
+              Más Información
             </motion.button>
           </div>
         </motion.div>
@@ -49,9 +49,9 @@ const Hero = () => {
           className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 text-white"
         >
           {[
-            { icon: Shield, title: 'Advanced Protection', desc: 'Multi-layered security systems' },
-            { icon: Lock, title: 'Data Encryption', desc: 'End-to-end encryption protocols' },
-            { icon: Server, title: 'Cloud Security', desc: 'Secure cloud infrastructure' },
+            { icon: Shield, title: 'Protección Avanzada', desc: 'Sistemas de seguridad multicapa' },
+            { icon: Lock, title: 'Encriptación de Datos', desc: 'Protocolos de encriptación de extremo a extremo' },
+            { icon: Server, title: 'Seguridad en la Nube', desc: 'Infraestructura de nube segura' },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="flex flex-col items-center p-6 rounded-lg bg-white/10 backdrop-blur-sm">
               <Icon className="w-12 h-12 mb-4" />

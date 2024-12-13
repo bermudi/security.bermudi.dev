@@ -1,11 +1,18 @@
 ---
-import { getBlogPost } from '../../utils/blogUtils';
+import { getBlogPost, getBlogPosts } from '../../utils/blogUtils';
 import Layout from '../../layouts/Layout.astro';
 import { format } from 'date-fns';
 
+export async function getStaticPaths() {
+  const allPosts = await getBlogPosts();
+  return allPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
 const { slug } = Astro.params;
 const post = await getBlogPost(slug);
-
 if (!post) {
   return Astro.redirect('/404');
 }
@@ -27,7 +34,7 @@ if (!post) {
     <div class="prose prose-lg max-w-none" set:html={post.content} />
     <div class="mt-8 flex flex-wrap gap-2">
       {post.tags.map(tag => (
-        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
+        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm">
           {tag}
         </span>
       ))}

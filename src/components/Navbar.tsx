@@ -36,7 +36,7 @@ const Navbar = () => {
     }
   };
 
-  const navItems = ['services', 'about', 'cases', 'testimonials', 'contact', 'blog'];
+  const navItems = ['servicios', 'acerca', 'casos', 'testimonios', 'contacto', 'blog'];
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${

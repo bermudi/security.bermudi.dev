@@ -13,23 +13,23 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    content: "SecureGuard's proactive approach to cybersecurity has transformed how we handle sensitive data. Their team's expertise is unmatched.",
+    content: "El enfoque proactivo de SecureGuard en materia de ciberseguridad ha transformado nuestra manera de gestionar datos sensibles. La experiencia de su equipo es inigualable.",
     author: "Sarah Chen",
     position: "CTO",
     company: "TechCorp Solutions",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
   },
   {
-    content: "The level of protection and peace of mind we've received since partnering with SecureGuard has been invaluable to our operations.",
+    content: "El nivel de protección y tranquilidad que hemos recibido desde que nos asociamos con SecureGuard ha sido invaluable para nuestras operaciones.",
     author: "Michael Rodriguez",
     position: "CISO",
     company: "Global Finance Inc",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80"
   },
   {
-    content: "Their security training program has significantly improved our team's awareness and response to potential threats.",
+    content: "Su programa de capacitación en seguridad ha mejorado significativamente la conciencia y la respuesta de nuestro equipo ante posibles amenazas.",
     author: "Emily Thompson",
-    position: "Head of IT",
+    position: "Jefe de TI",
     company: "HealthTech Systems",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80"
   }
@@ -79,9 +79,9 @@ const Testimonials = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Client Testimonials</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Testimonios de Clientes</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Hear from our clients about their experience working with SecureGuard.
+            Escuche a nuestros clientes sobre su experiencia trabajando con SecureGuard.
           </p>
         </motion.div>
 
