@@ -36,8 +36,8 @@ const Navbar = () => {
     }
   };
 
-  const navItems = ['servicios', 'acerca', 'casos', 'testimonios', 'contacto', 'blog'];
-
+  const navItems = ['services', 'about', 'cases', 'testimonials', 'contact', 'blog'];
+  
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white shadow-lg' : isBlogPage ? 'bg-white' : 'bg-transparent'
