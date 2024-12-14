@@ -4,6 +4,21 @@ import { Shield, Lock, Server } from 'lucide-react'; // Icons for our features
 
 // Define the Hero component
 const Hero = () => {
+  // Function to handle scrolling to the contact section
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToServices = () => {
+    const contactSection = document.getElementById('services');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     // Main container with a gradient background and full viewport height
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 to-blue-900">
@@ -38,15 +53,17 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }} // Slight scale up on hover
               whileTap={{ scale: 0.95 }} // Slight scale down on tap
-              className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              className="px-8 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors"
+              onClick={scrollToContact}
             >
-              Comenzar
+              Estoy bajo ataque
             </motion.button>
             {/* Secondary CTA button with similar animations */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-colors"
+              onClick={scrollToServices}
             >
               Más Información
             </motion.button>
