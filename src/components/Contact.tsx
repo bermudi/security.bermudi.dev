@@ -1,8 +1,11 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+// Import necessary dependencies
+import { useState } from 'react'; // For managing form state
+import { motion } from 'framer-motion'; // For animations
+import { Mail, Phone, MapPin, Send } from 'lucide-react'; // Icons for UI
 
+// Define the Contact component
 const Contact = () => {
+  // Initialize form state using useState hook
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -10,22 +13,27 @@ const Contact = () => {
     message: ''
   });
 
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
+    e.preventDefault(); // Prevent default form submission behavior
+    // Log form data (in a real app, you'd send this to a server)
     console.log('Form submitted:', formState);
   };
 
+  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    // Update form state, spreading the existing state and updating the changed field
     setFormState({
       ...formState,
       [e.target.name]: e.target.value
     });
   };
 
+  // Render the component
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Animated section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +46,9 @@ const Contact = () => {
           </p>
         </motion.div>
 
+        {/* Grid layout for contact information and form */}
         <div className="grid md:grid-cols-2 gap-12">
+          {/* Contact information section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -46,6 +56,7 @@ const Contact = () => {
           >
             <h3 className="text-2xl font-semibold mb-6">Ponte en Contacto</h3>
             <div className="space-y-6">
+              {/* Email contact info */}
               <div className="flex items-center">
                 <Mail className="w-6 h-6 text-blue-600 mr-4" />
                 <div>
@@ -53,6 +64,7 @@ const Contact = () => {
                   <p className="text-gray-600">contact@secureguard.com</p>
                 </div>
               </div>
+              {/* Phone contact info */}
               <div className="flex items-center">
                 <Phone className="w-6 h-6 text-blue-600 mr-4" />
                 <div>
@@ -60,6 +72,7 @@ const Contact = () => {
                   <p className="text-gray-600">+1 (555) 123-4567</p>
                 </div>
               </div>
+              {/* Address contact info */}
               <div className="flex items-center">
                 <MapPin className="w-6 h-6 text-blue-600 mr-4" />
                 <div>
@@ -70,12 +83,14 @@ const Contact = () => {
             </div>
           </motion.div>
 
+          {/* Contact form section */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Name input field */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Nombre
@@ -90,6 +105,7 @@ const Contact = () => {
                   required
                 />
               </div>
+              {/* Email input field */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Correo Electrónico
@@ -104,6 +120,7 @@ const Contact = () => {
                   required
                 />
               </div>
+              {/* Company input field */}
               <div>
                 <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
                   Compañía
@@ -117,6 +134,7 @@ const Contact = () => {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
+              {/* Message textarea */}
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                   Mensaje
@@ -131,6 +149,7 @@ const Contact = () => {
                   required
                 />
               </div>
+              {/* Submit button with animation */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -148,4 +167,5 @@ const Contact = () => {
   );
 };
 
+// Export the Contact component as the default export
 export default Contact;

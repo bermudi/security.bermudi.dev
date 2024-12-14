@@ -1,23 +1,27 @@
-// import React from 'react';
+// Import necessary dependencies
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Shield, Lock, Server, Cloud, Users, Terminal } from 'lucide-react';
 
+// Define the ServiceCard component
 const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => {
+  // Use the useInView hook to detect when the component is visible
   const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
+    triggerOnce: true, // Only trigger the animation once
+    threshold: 0.1, // Trigger when 10% of the component is visible
   });
 
   return (
+    // Use motion.div for animations
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ scale: 1.05 }}
+      ref={ref} // Attach the ref for intersection observer
+      initial={{ opacity: 0, y: 50 }} // Initial state: invisible and 50px below
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} // Animate when in view
+      transition={{ duration: 0.5 }} // Animation duration
+      whileHover={{ scale: 1.05 }} // Scale up slightly on hover
       className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer"
     >
+      {/* Icon container */}
       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
         <Icon className="w-6 h-6 text-blue-600" />
       </div>
@@ -27,7 +31,9 @@ const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: str
   );
 };
 
+// Define the main Services component
 const Services = () => {
+  // Array of service objects
   const services = [
     {
       icon: Shield,
@@ -64,6 +70,7 @@ const Services = () => {
   return (
     <section id="services" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Animated section title */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -76,7 +83,9 @@ const Services = () => {
           </p>
         </motion.div>
 
+        {/* Grid layout for service cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Map through services array and render ServiceCard for each */}
           {services.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
