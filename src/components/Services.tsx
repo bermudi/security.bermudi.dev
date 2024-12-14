@@ -28,7 +28,7 @@ const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: str
         title === 'Seguridad en la Nube' ? '/cloud-security' :
         title === 'Capacitación en Seguridad' ? '/security-training' :
         title === 'Pruebas de Penetración' ? '/penetration-testing' : '#'
-      } class="no-underline">
+      } className="no-underline">
       {/* Icon container */}
       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
         <Icon className="w-6 h-6 text-blue-600" />
