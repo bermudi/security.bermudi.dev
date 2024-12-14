@@ -1,10 +1,15 @@
 // Import necessary dependencies
+import React, { useState, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Shield, Lock, Server, Cloud, Users, Terminal } from 'lucide-react';
+import ServicePopup from './ServicePopup';
+
+// Lazy load service content
+const ThreatDetectionContent = lazy(() => import('../content/services/threat-detection'));
 
 // Define the ServiceCard component
-const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => {
+const ServiceCard = ({ icon: Icon, title, description, onClick }: { icon: any, title: string, description: string, onClick: () => void }) => {
   // Use the useInView hook to detect when the component is visible
   const [ref, inView] = useInView({
     triggerOnce: true, // Only trigger the animation once
@@ -20,34 +25,29 @@ const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: str
       transition={{ duration: 0.5 }} // Animation duration
       whileHover={{ scale: 1.05 }} // Scale up slightly on hover
       className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer"
+      onClick={onClick}
     >
-    <a href={
-        title === 'Detección de Amenazas' ? '/threat-detection' :
-        title === 'Protección de Datos' ? '/data-protection' :
-        title === 'Seguridad de la Red' ? '/network-security' :
-        title === 'Seguridad en la Nube' ? '/cloud-security' :
-        title === 'Capacitación en Seguridad' ? '/security-training' :
-        title === 'Pruebas de Penetración' ? '/penetration-testing' : '#'
-      } className="no-underline">
       {/* Icon container */}
       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
         <Icon className="w-6 h-6 text-blue-600" />
       </div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-gray-600">{description}</p>
-      </a>
     </motion.div>
   );
 };
 
 // Define the main Services component
 const Services = () => {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+
   // Array of service objects
   const services = [
     {
       icon: Shield,
       title: 'Detección de Amenazas',
       description: 'Sistemas avanzados de detección y prevención de amenazas para proteger su infraestructura.',
+      content: ThreatDetectionContent,
     },
     {
       icon: Lock,
@@ -96,10 +96,28 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Map through services array and render ServiceCard for each */}
           {services.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+            <ServiceCard
+              key={service.title}
+              {...service}
+              onClick={() => setSelectedService(service.title)}
+            />
           ))}
         </div>
       </div>
+
+      {/* Service Popup */}
+      {selectedService && (
+        <ServicePopup
+          isOpen={!!selectedService}
+          onClose={() => setSelectedService(null)}
+          title={selectedService}
+          content={
+            <Suspense fallback={<div>Cargando...</div>}>
+              {React.createElement(services.find(s => s.title === selectedService)?.content || (() => null))}
+            </Suspense>
+          }
+        />
+      )}
     </section>
   );
 };
