@@ -1,35 +1,66 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Shield } from 'lucide-react';
 ---
 
-<BaseLayout title="Detección de Amenazas">
-    <section class="py-16">
-        <div class="container mx-auto px-4">
-            <h1 class="text-4xl font-bold text-gray-900 mb-8">Detección de Amenazas</h1>
-            <p class="text-gray-700 mb-8">
-                En el panorama actual de ciberseguridad, la detección temprana de amenazas es fundamental para proteger su negocio.
-                Nuestros servicios de detección de amenazas están diseñados para identificar y neutralizar las amenazas antes de que puedan causar daños.
-            </p>
+<BaseLayout title="Detección de Amenazas | Bermudi Security">
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Detección de Amenazas</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Sistemas avanzados de detección y prevención de amenazas para proteger su infraestructura en el complejo panorama digital actual.
+                </p>
+            </div>
 
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">¿Qué Ofrecemos?</h2>
-            <ul class="list-disc list-inside text-gray-700 mb-8">
-                <li><strong>Monitoreo Continuo:</strong> Vigilancia constante de su red y sistemas para detectar actividades sospechosas.</li>
-                <li><strong>Análisis de Comportamiento:</strong> Identificación de patrones de comportamiento anómalos que podrían indicar una amenaza.</li>
-                <li><strong>Alertas en Tiempo Real:</strong> Notificaciones inmediatas sobre posibles incidentes de seguridad.</li>
-                <li><strong>Integración con Herramientas de Seguridad:</strong> Compatibilidad con sus herramientas de seguridad existentes para una protección integral.</li>
-                <li><strong>Informes Detallados:</strong> Análisis exhaustivos de incidentes de seguridad para mejorar su postura de seguridad.</li>
-            </ul>
+            <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                        <Shield class="w-6 h-6 text-blue-600" />
+                    </div>
+                    <h2 class="text-2xl font-semibold text-gray-900">¿Qué Ofrecemos?</h2>
+                </div>
+                <ul class="space-y-4 text-gray-700">
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                        <span><strong>Monitoreo Continuo:</strong> Vigilancia constante de su red y sistemas para detectar actividades sospechosas.</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                        <span><strong>Análisis de Comportamiento:</strong> Identificación de patrones de comportamiento anómalos que podrían indicar una amenaza.</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                        <span><strong>Alertas en Tiempo Real:</strong> Notificaciones inmediatas sobre posibles incidentes de seguridad.</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                        <span><strong>Integración con Herramientas de Seguridad:</strong> Compatibilidad con sus herramientas de seguridad existentes para una protección integral.</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                        <span><strong>Informes Detallados:</strong> Análisis exhaustivos de incidentes de seguridad para mejorar su postura de seguridad.</span>
+                    </li>
+                </ul>
+            </div>
 
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">¿Por Qué Elegirnos?</h2>
-            <p class="text-gray-700 mb-8">
-                Nuestro equipo de expertos en seguridad utiliza las últimas tecnologías y metodologías para garantizar la protección de su infraestructura.
-                Nos comprometemos a proporcionar soluciones de detección de amenazas efectivas y personalizadas para satisfacer sus necesidades específicas.
-            </p>
+            <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">¿Por Qué Elegirnos?</h2>
+                <p class="text-gray-700">
+                    Nuestro equipo de expertos en seguridad utiliza las últimas tecnologías y metodologías para garantizar la protección de su infraestructura.
+                    Nos comprometemos a proporcionar soluciones de detección de amenazas efectivas y personalizadas para satisfacer sus necesidades específicas.
+                </p>
+            </div>
 
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Contáctenos</h2>
-            <p class="text-gray-700">
-                Si desea obtener más información sobre nuestros servicios de detección de amenazas, no dude en <a href="/contact" class="text-blue-600 hover:underline">contactarnos</a>.
-            </p>
+            <div class="text-center">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Contáctenos</h2>
+                <p class="text-gray-700 mb-6">
+                    Si desea obtener más información sobre nuestros servicios de detección de amenazas, no dude en contactarnos.
+                </p>
+                <a href="/contact" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    Contactar Ahora
+                </a>
+            </div>
         </div>
     </section>
 </BaseLayout>
