@@ -12,42 +12,56 @@ const Navbar = () => {
   useEffect(() => {
     // Function to update isScrolled state based on scroll position
     const handleScroll = () => {
+      // Set isScrolled to true if page is scrolled more than 20px
       setIsScrolled(window.scrollY > 20);
     };
 
-    // Add scroll event listener
+    // Add scroll event listener when component mounts
     window.addEventListener('scroll', handleScroll);
 
-    // Check if current page is blog
+    // Check if current page is blog by examining the URL
     setIsBlogPage(window.location.pathname.startsWith('/blog'));
 
-    // Cleanup function to remove event listener
+    // Cleanup function to remove event listener when component unmounts
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, []); // Empty dependency array means this effect runs once on mount
 
   // Function to handle navigation/scrolling to different sections
   const scrollTo = (id: string) => {
+    // Special case for blog: navigate to blog page
     if (id === 'blog') {
-      // If blog is clicked, navigate to blog page
       window.location.href = '/blog';
       return;
     }
 
+    // Use the translation mapping to get the correct element ID
+    const elementId = translations[id as keyof typeof translations];
+
     if (isBlogPage) {
-      // If on blog page, navigate to home page first, then to specific section
-      window.location.href = `/#${id}`;
+      // If on blog page, navigate to home page with correct anchor
+      window.location.href = `/#${elementId}`;
     } else {
-      // If on home page, scroll to the section smoothly
-      const element = document.getElementById(id);
+      // If on home page, scroll to the correct section
+      const element = document.getElementById(elementId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
-        setIsMenuOpen(false);  // Close mobile menu after navigation
+        setIsMenuOpen(false); // Close mobile menu after navigation
       }
     }
   };
 
-  // Array of navigation items
-  const navItems = ['services', 'about', 'cases', 'testimonials', 'contact', 'blog'];
+  // Translation mapping from Spanish to English for element IDs
+  const translations = {
+    'servicios': 'services',
+    'nosotros': 'about',
+    'casos': 'cases',
+    'testimonios': 'testimonials',
+    'contacto': 'contact',
+    'blog': 'blog'
+  };
+
+  // Array of navigation items in Spanish
+  const navItems = ['servicios', 'nosotros', 'casos', 'testimonios', 'contacto', 'blog'];
 
   return (
     // Navigation bar with dynamic styling based on scroll and page state
@@ -58,12 +72,15 @@ const Navbar = () => {
         <div className="flex justify-between h-16 items-center">
           {/* Logo and brand name */}
           <div className="flex items-center">
+            {/* Shield icon with dynamic color based on scroll/page state */}
             <Shield className={`h-8 w-8 ${isScrolled || isBlogPage ? 'text-blue-600' : 'text-white'}`} />
+            {/* Brand name with dynamic color */}
             <span className={`ml-2 text-xl font-bold ${isScrolled || isBlogPage ? 'text-gray-900' : 'text-white'}`}>SecureGuard</span>
           </div>
 
           {/* Desktop navigation menu */}
           <div className="hidden md:flex space-x-8">
+            {/* Map through navItems to create navigation buttons */}
             {navItems.map((item) => (
               <button
                 key={item}
@@ -77,45 +94,35 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button (only visible on small screens) */}
           <div className="md:hidden">
-            {/* Mobile menu toggle button */}
             <button
-              // Event handler to toggle the mobile menu open/closed
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              // Dynamic className based on scroll position and current page
               className={`hover:text-blue-600 ${
-                // Text color changes based on whether the page is scrolled or if it's the blog page
                 isScrolled || isBlogPage ? 'text-gray-700' : 'text-white'
               }`}
             >
-              {/* Conditional rendering of icon based on menu state */}
-              {isMenuOpen 
-                ? <X size={24} /> // 'X' icon when menu is open (for closing)
-                : <Menu size={24} /> // 'Menu' icon when menu is closed (for opening)
+              {/* Toggle between X and Menu icons based on menu state */}
+              {isMenuOpen
+                ? <X size={24} />
+                : <Menu size={24} />
               }
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu (conditionally rendered) */}
+      {/* Mobile menu (conditionally rendered when isMenuOpen is true) */}
       {isMenuOpen && (
-        // Remove the extra curly braces here
         <div className="md:hidden bg-white">
-          {/* Inner container for menu items with padding and spacing */}
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {/* Map through navItems array to create menu buttons */}
+            {/* Map through navItems to create mobile menu buttons */}
             {navItems.map((item) => (
               <button
-                // Unique key for each button (React requirement for lists)
                 key={item}
-                // Click handler to scroll/navigate to the selected section
                 onClick={() => scrollTo(item)}
-                // Styling classes for the button
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600 capitalize"
               >
-                {/* Display the navigation item text */}
                 {item}
               </button>
             ))}
