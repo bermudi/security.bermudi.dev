@@ -1,9 +1,7 @@
 // Import necessary dependencies
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useState } from 'react';
 import { Shield, Lock, Server, Cloud, Users, Terminal } from 'lucide-react';
-import ThreatDetectionModal from './ThreatDetectionModal';
 
 // Define the ServiceCard component
 const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => {
@@ -12,12 +10,6 @@ const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: str
     triggerOnce: true, // Only trigger the animation once
     threshold: 0.1, // Trigger when 10% of the component is visible
   });
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleCardClick = () => {
-    setIsModalOpen(true);
-  };
 
   return (
     // Use motion.div for animations
@@ -28,17 +20,22 @@ const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: str
       transition={{ duration: 0.5 }} // Animation duration
       whileHover={{ scale: 1.05 }} // Scale up slightly on hover
       className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer"
-      onClick={handleCardClick}
     >
+    <a href={
+        title === 'Detección de Amenazas' ? '/threat-detection' :
+        title === 'Protección de Datos' ? '/data-protection' :
+        title === 'Seguridad de la Red' ? '/network-security' :
+        title === 'Seguridad en la Nube' ? '/cloud-security' :
+        title === 'Capacitación en Seguridad' ? '/security-training' :
+        title === 'Pruebas de Penetración' ? '/penetration-testing' : '#'
+      } className="no-underline">
       {/* Icon container */}
       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
         <Icon className="w-6 h-6 text-blue-600" />
       </div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-gray-600">{description}</p>
-        {title === 'Detección de Amenazas' && (
-            <ThreatDetectionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        )}
+      </a>
     </motion.div>
   );
 };
