@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
 import { Shield, Lock, Server, Cloud, Users, Terminal } from 'lucide-react';
+import ThreatDetectionModal from './ThreatDetectionModal';
 
 // Define the ServiceCard component
 const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => {
