@@ -7,6 +7,11 @@ import ServicePopup from './ServicePopup';
 
 // Lazy load service content
 const ThreatDetectionContent = lazy(() => import('../content/services/threat-detection'));
+const DataProtectionContent = lazy(() => import('../content/services/data-protection'));
+const NetworkSecurityContent = lazy(() => import('../content/services/network-security'));
+const CloudSecurityContent = lazy(() => import('../content/services/cloud-security'));
+const SecurityTrainingContent = lazy(() => import('../content/services/security-training'));
+const PenetrationTestingContent = lazy(() => import('../content/services/penetration-testing'));
 
 // Define the ServiceCard component
 const ServiceCard = ({ icon: Icon, title, description, onClick }: { icon: any, title: string, description: string, onClick: () => void }) => {
@@ -53,26 +58,31 @@ const Services = () => {
       icon: Lock,
       title: 'Protección de Datos',
       description: 'Soluciones integrales de protección de datos con encriptación de grado militar.',
+      content: DataProtectionContent,
     },
     {
       icon: Server,
       title: 'Seguridad de la Red',
       description: 'Servicios de diseño e implementación de arquitectura de red segura.',
+      content: NetworkSecurityContent,
     },
     {
       icon: Cloud,
       title: 'Seguridad en la Nube',
       description: 'Soluciones de seguridad nativas de la nube para infraestructuras modernas.',
+      content: CloudSecurityContent,
     },
     {
       icon: Users,
       title: 'Capacitación en Seguridad',
       description: 'Programas de capacitación y certificación en concientización sobre seguridad para empleados.',
+      content: SecurityTrainingContent,
     },
     {
       icon: Terminal,
       title: 'Pruebas de Penetración',
       description: 'Evaluaciones de seguridad integrales y pruebas de vulnerabilidad.',
+      content: PenetrationTestingContent,
     },
   ];
 
