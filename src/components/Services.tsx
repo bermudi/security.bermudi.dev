@@ -1,6 +1,7 @@
 // Import necessary dependencies
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useState } from 'react';
 import { Shield, Lock, Server, Cloud, Users, Terminal } from 'lucide-react';
 
 // Define the ServiceCard component
@@ -11,6 +12,12 @@ const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: str
     threshold: 0.1, // Trigger when 10% of the component is visible
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCardClick = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     // Use motion.div for animations
     <motion.div
@@ -20,6 +27,7 @@ const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: str
       transition={{ duration: 0.5 }} // Animation duration
       whileHover={{ scale: 1.05 }} // Scale up slightly on hover
       className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer"
+      onClick={handleCardClick}
     >
       {/* Icon container */}
       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
@@ -27,6 +35,9 @@ const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: str
       </div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-gray-600">{description}</p>
+        {title === 'Detección de Amenazas' && (
+            <ThreatDetectionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        )}
     </motion.div>
   );
 };
