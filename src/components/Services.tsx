@@ -21,12 +21,14 @@ const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: str
       whileHover={{ scale: 1.05 }} // Scale up slightly on hover
       className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer"
     >
+    <a href="/threat-detection" class="no-underline">
       {/* Icon container */}
       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
         <Icon className="w-6 h-6 text-blue-600" />
       </div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-gray-600">{description}</p>
+      </a>
     </motion.div>
   );
 };
