@@ -1,23 +1,25 @@
 import { useState, useEffect } from 'react';
-import { getBlogPosts } from '../utils/blogUtils';
-import type { BlogPost } from '../types/blog';
+import type { BlogPost } from '../context/BlogContext';
+import { BlogService } from '../services/blog';
+import { ApiError, NotFoundError } from '../types/errors';
 
 export const useBlogPosts = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      console.log('Fetching posts...');
       try {
-        const fetchedPosts = await getBlogPosts();
-        console.log('Fetched posts:', fetchedPosts);
+        const fetchedPosts = await BlogService.getPosts();
         setPosts(fetchedPosts);
-        setIsLoading(false);
       } catch (err) {
-        console.error('Error fetching posts:', err);
-        setError(err instanceof Error ? err.message : 'Failed to fetch posts');
+        if (err instanceof ApiError || err instanceof NotFoundError) {
+          setError(err);
+        } else {
+          setError(new ApiError(500, 'An unexpected error occurred while fetching posts'));
+        }
+      } finally {
         setIsLoading(false);
       }
     };
@@ -25,6 +27,5 @@ export const useBlogPosts = () => {
     fetchPosts();
   }, []);
 
-  console.log('useBlogPosts hook state:', { posts, isLoading, error });
   return { posts, isLoading, error };
 };

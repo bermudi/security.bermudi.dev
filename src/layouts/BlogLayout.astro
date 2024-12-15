@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { 
-  class: className,
+  class: className = '',
   variant = 'default',
   publishDate,
   author,
@@ -21,18 +21,32 @@ const variantStyles = {
   default: 'max-w-4xl',
   wide: 'max-w-7xl',
   narrow: 'max-w-2xl'
-};
+} as const;
 ---
 
-<section class:list={["py-20", className]}>
-  <div class:list={[variantStyles[variant], "mx-auto px-4 sm:px-6 lg:px-8"]}>
+<section class:list={['py-20', className]}>
+  <div class:list={[variantStyles[variant], 'mx-auto px-4 sm:px-6 lg:px-8']}>
     {(publishDate || author || estimatedReadTime) && (
-      <div class="mb-8 text-gray-600">
-        {publishDate && <time datetime={publishDate.toISOString()}>{format(publishDate, 'MMMM d, yyyy')}</time>}
-        {author && <span class="mx-2">by {author}</span>}
-        {estimatedReadTime && <span>· {estimatedReadTime} min read</span>}
+      <div class="mb-8 flex items-center gap-4 text-sm text-secondary-600 dark:text-secondary-400">
+        {publishDate && (
+          <time datetime={publishDate.toISOString()} class="flex items-center">
+            {format(publishDate, 'MMMM d, yyyy')}
+          </time>
+        )}
+        {author && (
+          <div class="flex items-center">
+            {author}
+          </div>
+        )}
+        {estimatedReadTime && (
+          <div class="flex items-center">
+            {estimatedReadTime} min read
+          </div>
+        )}
       </div>
     )}
-    <slot />
+    <div class="prose prose-primary dark:prose-invert prose-headings:text-secondary-900 dark:prose-headings:text-secondary-100 prose-p:text-secondary-600 dark:prose-p:text-secondary-400 max-w-none">
+      <slot />
+    </div>
   </div>
 </section>

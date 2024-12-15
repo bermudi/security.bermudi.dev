@@ -4,7 +4,7 @@ import BlogCard from './BlogCard';
 import { Button } from '../common/Button';
 
 const BlogGrid: React.FC = () => {
-  const { posts, isLoading, error, searchQuery } = useBlogContext();
+  const { filteredPosts, isLoading, error, searchQuery, selectedTag } = useBlogContext();
 
   if (isLoading) {
     return (
@@ -27,22 +27,19 @@ const BlogGrid: React.FC = () => {
     );
   }
 
-  const filteredPosts = searchQuery
-    ? posts.filter(post =>
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.description.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : posts;
-
   if (filteredPosts.length === 0) {
     return (
       <div className="text-center py-12">
-        {searchQuery ? (
-          <p className="text-gray-600">
-            No posts found matching "{searchQuery}"
+        {searchQuery || selectedTag ? (
+          <p className="text-secondary-600 dark:text-secondary-400">
+            No posts found {searchQuery && `matching "${searchQuery}"`}
+            {searchQuery && selectedTag && ' and '}
+            {selectedTag && `tagged with "${selectedTag}"`}
           </p>
         ) : (
-          <p className="text-gray-600">No blog posts available.</p>
+          <p className="text-secondary-600 dark:text-secondary-400">
+            No blog posts available.
+          </p>
         )}
       </div>
     );
