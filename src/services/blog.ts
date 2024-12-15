@@ -8,8 +8,8 @@ export class BlogService {
       const posts = await getCollection('blog');
       return posts.map(post => ({
         title: post.data.title,
-        slug: post.data.slug || post.slug,
-        publishDate: post.data.date,
+        slug: post.slug,
+        publishDate: new Date(post.data.date),
         description: post.data.excerpt,
         author: post.data.author,
         tags: post.data.tags,
