@@ -1,89 +1,59 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { useBlogPosts } from '../hooks/useBlogPosts';
-import { BlogService } from '../services/blog';
-
-export interface BlogPost {
-  title: string;
-  slug: string;
-  publishDate: Date;
-  description: string;
-  author?: string;
-  estimatedReadTime?: number;
-  tags?: string[];
-}
+import React, { createContext, useContext, useState } from 'react';
+import type { BlogPost } from '../types/blog';
+import { searchPosts, filterPostsByTag } from '../utils/blogUtils';
 
 interface BlogContextType {
-  posts: BlogPost[];
-  filteredPosts: BlogPost[];
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   selectedTag: string | null;
   setSelectedTag: (tag: string | null) => void;
-  tags: string[];
-  isLoading: boolean;
-  error: Error | null;
+  filteredPosts: BlogPost[];
+  allPosts: BlogPost[];
 }
 
-export const BlogContext = createContext<BlogContextType | undefined>(undefined);
+interface BlogProviderProps {
+  children: React.ReactNode;
+  initialPosts: BlogPost[];
+}
 
-export function BlogProvider({ children }: { children: React.ReactNode }) {
-  const { posts, isLoading, error } = useBlogPosts();
+const BlogContext = createContext<BlogContextType | undefined>(undefined);
+
+export const BlogProvider: React.FC<BlogProviderProps> = ({ children, initialPosts }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [tags, setTags] = useState<string[]>([]);
-
-  useEffect(() => {
-    const fetchTags = async () => {
-      try {
-        const fetchedTags = await BlogService.getTags();
-        setTags(fetchedTags);
-      } catch (error) {
-        console.error('Error fetching tags:', error);
-      }
-    };
-    fetchTags();
-  }, [posts]);
+  const [allPosts] = useState<BlogPost[]>(initialPosts);
 
   const filteredPosts = React.useMemo(() => {
-    return posts
-      .filter(post => {
-        const matchesSearch = searchQuery
-          ? post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            post.description.toLowerCase().includes(searchQuery.toLowerCase())
-          : true;
-
-        const matchesTag = selectedTag
-          ? post.tags?.includes(selectedTag)
-          : true;
-
-        return matchesSearch && matchesTag;
-      })
-      .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
-  }, [posts, searchQuery, selectedTag]);
-  
-  const value = {
-    posts,
-    filteredPosts,
-    searchQuery,
-    setSearchQuery,
-    selectedTag,
-    setSelectedTag,
-    tags,
-    isLoading,
-    error,
-  };
+    let filtered = [...allPosts];
+    if (selectedTag) {
+      filtered = filterPostsByTag(filtered, selectedTag);
+    }
+    if (searchQuery) {
+      filtered = searchPosts(filtered, searchQuery);
+    }
+    return filtered;
+  }, [allPosts, selectedTag, searchQuery]);
 
   return (
-    <BlogContext.Provider value={value}>
+    <BlogContext.Provider
+      value={{
+        searchQuery,
+        setSearchQuery,
+        selectedTag,
+        setSelectedTag,
+        filteredPosts,
+        allPosts
+      }}
+    >
       {children}
     </BlogContext.Provider>
   );
-}
+};
 
-export function useBlogContext() {
+export const useBlog = () => {
   const context = useContext(BlogContext);
   if (context === undefined) {
-    throw new Error('useBlogContext must be used within a BlogProvider');
+    throw new Error('useBlog must be used within a BlogProvider');
   }
   return context;
-} 
+}; 

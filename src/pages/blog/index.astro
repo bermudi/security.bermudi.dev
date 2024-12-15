@@ -6,6 +6,7 @@ import { getBlogPosts } from '../../utils/blogUtils';
 
 const title = "Blog - SecureGuard";
 const posts = await getBlogPosts();
+console.log('Blog index page - Fetched posts:', posts);
 ---
 
 <Layout title={title}>

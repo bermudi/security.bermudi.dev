@@ -1,10 +1,10 @@
 import React from 'react';
 import { Search } from 'lucide-react';
-import { useBlogContext } from '../../context/BlogContext';
+import { useBlog } from '../../context/BlogContext';
 import { Button } from '../common/Button';
 
 const BlogSearch: React.FC = () => {
-  const { searchQuery, setSearchQuery } = useBlogContext();
+  const { searchQuery, setSearchQuery } = useBlog();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

@@ -6,24 +6,29 @@ type Loader = () => Promise<{ frontmatter: any; content: string }>;
 export class BlogService {
   static async getPosts(): Promise<BlogPost[]> {
     try {
-      const posts = await import.meta.glob('../content/blog/*.md') as Record<string, Loader>;
+      console.log('Starting to fetch blog posts...');
+      const posts = await import.meta.glob('../../src/content/blog/*.md', { eager: true }) as Record<string, { frontmatter: any; content: string }>;
+      console.log('Found posts:', Object.keys(posts));
+
       const allPosts = await Promise.all(
-        Object.entries(posts).map(async ([filepath, loader]) => {
-          const slug = filepath.split('/').pop()?.replace(/\.md$/, '');
-          const { frontmatter, content } = await loader();
+        Object.entries(posts).map(async ([filepath, post]) => {
+          const slug = filepath.split('/').pop()?.replace(/\.md$/, '') || '';
+          console.log('Processing post:', { filepath, slug, frontmatter: post.frontmatter });
+          
           return {
-            title: frontmatter.title,
+            title: post.frontmatter.title,
             slug,
-            excerpt: frontmatter.excerpt,
-            content,
-            author: frontmatter.author,
-            date: new Date(frontmatter.date),
-            tags: frontmatter.tags,
-            image: frontmatter.image
+            excerpt: post.frontmatter.excerpt,
+            content: post.content,
+            author: post.frontmatter.author,
+            date: new Date(post.frontmatter.date),
+            tags: post.frontmatter.tags || [],
+            image: post.frontmatter.image
           } as BlogPost;
         })
       );
 
+      console.log('Processed all posts:', allPosts);
       return allPosts.sort((a, b) => b.date.getTime() - a.date.getTime());
     } catch (error) {
       console.error('Error fetching blog posts:', error);

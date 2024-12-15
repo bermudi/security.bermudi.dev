@@ -1,9 +1,18 @@
 import React from 'react';
-import { useBlogContext } from '../../context/BlogContext';
+import { useBlog } from '../../context/BlogContext';
 import { Button } from '../common/Button';
 
 const BlogTags: React.FC = () => {
-  const { tags, selectedTag, setSelectedTag } = useBlogContext();
+  const { allPosts, selectedTag, setSelectedTag } = useBlog();
+  
+  // Get unique tags from all posts
+  const tags = React.useMemo(() => {
+    const tagSet = new Set<string>();
+    allPosts.forEach(post => {
+      post.tags?.forEach(tag => tagSet.add(tag));
+    });
+    return Array.from(tagSet).sort();
+  }, [allPosts]);
 
   if (!tags?.length) return null;
 

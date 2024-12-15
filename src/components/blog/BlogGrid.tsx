@@ -1,31 +1,9 @@
 import React from 'react';
-import { useBlogContext } from '../../context/BlogContext';
+import { useBlog } from '../../context/BlogContext';
 import BlogCard from './BlogCard';
-import { Button } from '../common/Button';
 
 const BlogGrid: React.FC = () => {
-  const { filteredPosts, isLoading, error, searchQuery, selectedTag } = useBlogContext();
-
-  if (isLoading) {
-    return (
-      <div className="text-center py-12">
-        <Button isLoading variant="primary">
-          Loading posts...
-        </Button>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="text-center py-12">
-        <div className="text-red-600 mb-4">{error.message}</div>
-        <Button variant="outline" onClick={() => window.location.reload()}>
-          Try Again
-        </Button>
-      </div>
-    );
-  }
+  const { filteredPosts, searchQuery, selectedTag } = useBlog();
 
   if (filteredPosts.length === 0) {
     return (
