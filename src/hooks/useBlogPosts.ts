@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { BlogPost } from '../context/BlogContext';
+import type { BlogPost } from '../types/blog';
 import { BlogService } from '../services/blog';
 import { ApiError, NotFoundError } from '../types/errors';
 
