@@ -1,13 +1,38 @@
 ---
+import { format } from 'date-fns';
+
 interface Props {
   class?: string;
+  variant?: 'default' | 'wide' | 'narrow';
+  publishDate?: Date;
+  author?: string;
+  estimatedReadTime?: number;
 }
 
-const { class: className } = Astro.props;
+const { 
+  class: className,
+  variant = 'default',
+  publishDate,
+  author,
+  estimatedReadTime
+} = Astro.props;
+
+const variantStyles = {
+  default: 'max-w-4xl',
+  wide: 'max-w-7xl',
+  narrow: 'max-w-2xl'
+};
 ---
 
 <section class:list={["py-20", className]}>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class:list={[variantStyles[variant], "mx-auto px-4 sm:px-6 lg:px-8"]}>
+    {(publishDate || author || estimatedReadTime) && (
+      <div class="mb-8 text-gray-600">
+        {publishDate && <time datetime={publishDate.toISOString()}>{format(publishDate, 'MMMM d, yyyy')}</time>}
+        {author && <span class="mx-2">by {author}</span>}
+        {estimatedReadTime && <span>· {estimatedReadTime} min read</span>}
+      </div>
+    )}
     <slot />
   </div>
 </section>

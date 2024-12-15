@@ -1,18 +1,30 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';  // Assuming you have a Footer component
+import Footer from '../components/Footer.astro';
+import ErrorBoundary from '../components/common/ErrorBoundary.tsx';
 
 interface Props {
   title: string;
+  description?: string;
+  showNavbar?: boolean;
+  showFooter?: boolean;
 }
 
-const { title } = Astro.props;
+const { 
+  title, 
+  description,
+  showNavbar = true,
+  showFooter = true 
+} = Astro.props;
 ---
 
-<BaseLayout title={title}>
-  <Navbar client:load />
-  <main>
-    <slot />
-  </main>
+<BaseLayout title={title} description={description}>
+  <ErrorBoundary>
+    {showNavbar && <Navbar client:load />}
+    <main class="min-h-screen">
+      <slot />
+    </main>
+    {showFooter && <Footer />}
+  </ErrorBoundary>
 </BaseLayout>
