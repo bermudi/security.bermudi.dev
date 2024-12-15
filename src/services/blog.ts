@@ -1,19 +1,30 @@
-import { getCollection } from 'astro:content';
-import type { BlogPost } from '../context/BlogContext';
+import type { BlogPost } from '../types/blog';
 import { ApiError, NotFoundError } from '../types/errors';
+
+type Loader = () => Promise<{ frontmatter: any; content: string }>;
 
 export class BlogService {
   static async getPosts(): Promise<BlogPost[]> {
     try {
-      const posts = await getCollection('blog');
-      return posts.map(post => ({
-        title: post.data.title,
-        slug: post.slug,
-        publishDate: new Date(post.data.date),
-        description: post.data.excerpt,
-        author: post.data.author,
-        tags: post.data.tags,
-      }));
+      const posts = await import.meta.glob('../content/blog/*.md') as Record<string, Loader>;
+      const allPosts = await Promise.all(
+        Object.entries(posts).map(async ([filepath, loader]) => {
+          const slug = filepath.split('/').pop()?.replace(/\.md$/, '');
+          const { frontmatter, content } = await loader();
+          return {
+            title: frontmatter.title,
+            slug,
+            excerpt: frontmatter.excerpt,
+            content,
+            author: frontmatter.author,
+            date: new Date(frontmatter.date),
+            tags: frontmatter.tags,
+            image: frontmatter.image
+          } as BlogPost;
+        })
+      );
+
+      return allPosts.sort((a, b) => b.date.getTime() - a.date.getTime());
     } catch (error) {
       console.error('Error fetching blog posts:', error);
       throw new ApiError(500, 'Failed to fetch blog posts', error);
@@ -35,20 +46,6 @@ export class BlogService {
         throw error;
       }
       throw new ApiError(500, `Failed to fetch blog post with slug: ${slug}`, error);
-    }
-  }
-
-  static async searchPosts(query: string): Promise<BlogPost[]> {
-    try {
-      const posts = await this.getPosts();
-      const searchTerm = query.toLowerCase();
-
-      return posts.filter(post => 
-        post.title.toLowerCase().includes(searchTerm) ||
-        post.description.toLowerCase().includes(searchTerm)
-      );
-    } catch (error) {
-      throw new ApiError(500, 'Failed to search blog posts', error);
     }
   }
 

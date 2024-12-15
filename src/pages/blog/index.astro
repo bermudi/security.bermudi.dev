@@ -2,8 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import BlogContainer from '../../components/blog/BlogContainer';
+import { getBlogPosts } from '../../utils/blogUtils';
 
 const title = "Blog - SecureGuard";
+const posts = await getBlogPosts();
 ---
 
 <Layout title={title}>
@@ -17,6 +19,6 @@ const title = "Blog - SecureGuard";
       </p>
     </div>
 
-    <BlogContainer client:load />
+    <BlogContainer posts={posts} client:load />
   </BlogLayout>
 </Layout>

@@ -10,18 +10,23 @@ interface BlogContextType {
   selectedTag: string | null;
   setSelectedTag: (tag: string | null) => void;
   filteredPosts: BlogPost[];
-  setAllPosts: (posts: BlogPost[]) => void;
+  allPosts: BlogPost[];
 }
 
 // Create a context with undefined as initial value
 const BlogContext = createContext<BlogContextType | undefined>(undefined);
 
+interface BlogProviderProps {
+  children: React.ReactNode;
+  initialPosts: BlogPost[];
+}
+
 // Create a provider component
-export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const BlogProvider: React.FC<BlogProviderProps> = ({ children, initialPosts }) => {
   // Set up state using useState hooks
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
+  const [allPosts] = useState<BlogPost[]>(initialPosts);
 
   // Use useMemo to memoize filtered posts
   const filteredPosts = React.useMemo(() => {
@@ -46,7 +51,7 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
         selectedTag,
         setSelectedTag,
         filteredPosts,
-        setAllPosts,
+        allPosts
       }}
     >
       {children}
