@@ -63,6 +63,7 @@ export const getBlogPost = async (slug: string): Promise<BlogPost | null> => {
     return null;
   }
 };
+
 export const searchPosts = (posts: BlogPost[], query: string): BlogPost[] => {
   const lowercaseQuery = query.toLowerCase();
   return posts.filter(post =>
