@@ -10,16 +10,18 @@ console.log('Blog index page - Fetched posts:', posts);
 ---
 
 <Layout title={title}>
-  <BlogLayout>
-    <div class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-secondary-900 dark:text-secondary-100 mb-4">
-        Security Insights
-      </h1>
-      <p class="text-xl text-secondary-600 dark:text-secondary-400">
-        Expert analysis and insights on cybersecurity trends and best practices.
-      </p>
-    </div>
+  <BlogLayout variant="wide">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600 mb-6">
+          Security Insights
+        </h1>
+        <p class="text-xl text-secondary-600 dark:text-secondary-400 max-w-2xl mx-auto">
+          Expert analysis and insights on cybersecurity trends and best practices.
+        </p>
+      </div>
 
-    <BlogContainer posts={posts} client:load />
+      <BlogContainer posts={posts} client:load />
+    </div>
   </BlogLayout>
 </Layout>
