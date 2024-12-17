@@ -16,12 +16,14 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <img
-      src={entry.data.image}
-      alt={entry.data.title}
-      class="w-full h-64 object-cover rounded-lg mb-8"
-    />
+  <article class="max-w-4xl mx-auto px-4 py-24">
+    <div class="relative">
+      <img
+        src={entry.data.image}
+        alt={entry.data.title}
+        class="w-full h-64 object-cover rounded-lg mb-8"
+      />
+    </div>
     <h1 class="text-4xl font-bold text-gray-900 mb-4">{entry.data.title}</h1>
     <div class="flex items-center gap-4 text-gray-600 mb-8">
       <span>{format(new Date(entry.data.date), 'MMMM d, yyyy')}</span>
