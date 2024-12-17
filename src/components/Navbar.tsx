@@ -62,7 +62,7 @@ const Navbar = () => {
   // Translation mapping from Spanish to English for element IDs
   const translations = {
     'servicios': 'services',
-    'nosotros': 'about',
+    'información': 'about',
     'casos': 'cases',
     'testimonios': 'testimonials',
     'contacto': 'contact',
@@ -70,7 +70,7 @@ const Navbar = () => {
   };
 
   // Array of navigation items in Spanish
-  const navItems = ['servicios', 'nosotros', 'casos', 'testimonios', 'contacto', 'blog'];
+  const navItems = ['servicios', 'información', 'casos', 'testimonios', 'contacto', 'blog'];
 
   return (
     // Navigation bar with dynamic styling based on scroll and page state
