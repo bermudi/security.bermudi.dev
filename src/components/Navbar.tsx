@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Shield, Menu, X } from 'lucide-react';
 
-// Navbar component definition
 const Navbar = () => {
   // State variables to manage navbar behavior
   const [isScrolled, setIsScrolled] = useState(false);  // Tracks if page has been scrolled
@@ -25,6 +24,16 @@ const Navbar = () => {
     // Cleanup function to remove event listener when component unmounts
     return () => window.removeEventListener('scroll', handleScroll);
   }, []); // Empty dependency array means this effect runs once on mount
+
+  // Add a method to navigate to home page/hero section
+  const navigateToHome = () => {
+    if (window.location.pathname !== '/') {
+      window.location.href = '/';
+    } else {
+      // If already on home page, scroll to top (hero section)
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   // Function to handle navigation/scrolling to different sections
   const scrollTo = (id: string) => {
@@ -70,12 +79,17 @@ const Navbar = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          {/* Logo and brand name */}
-          <div className="flex items-center">
+          {/* Logo and brand name as clickable link */}
+          <div 
+            className="flex items-center cursor-pointer" 
+            onClick={navigateToHome}
+          >
             {/* Shield icon with dynamic color based on scroll/page state */}
             <Shield className={`h-8 w-8 ${isScrolled || isBlogPage ? 'text-blue-600' : 'text-white'}`} />
             {/* Brand name with dynamic color */}
-            <span className={`ml-2 text-xl font-bold ${isScrolled || isBlogPage ? 'text-gray-900' : 'text-white'}`}>SecureGuard</span>
+            <span className={`ml-2 text-xl font-bold ${isScrolled || isBlogPage ? 'text-gray-900' : 'text-white'}`}>
+              SecureGuard
+            </span>
           </div>
 
           {/* Desktop navigation menu */}
