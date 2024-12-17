@@ -16,23 +16,23 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     content: "El enfoque proactivo de SecureGuard en materia de ciberseguridad ha transformado nuestra manera de gestionar datos sensibles. La experiencia de su equipo es inigualable.",
-    author: "Sarah Chen",
+    author: "Sofía Ramírez",
     position: "CTO",
-    company: "TechCorp Solutions",
+    company: "Soluciones Tecnológicas del Norte",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
   },
   {
     content: "El nivel de protección y tranquilidad que hemos recibido desde que nos asociamos con SecureGuard ha sido invaluable para nuestras operaciones.",
-    author: "Michael Rodriguez",
+    author: "Ricardo Gómez",
     position: "CISO",
-    company: "Global Finance Inc",
+    company: "Finanzas Globales del Sur",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80"
   },
   {
     content: "Su programa de capacitación en seguridad ha mejorado significativamente la conciencia y la respuesta de nuestro equipo ante posibles amenazas.",
-    author: "Emily Thompson",
-    position: "Jefe de TI",
-    company: "HealthTech Systems",
+    author: "Isabela Vargas",
+    position: "Jefa de TI",
+    company: "Sistemas de Salud del Centro",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80"
   }
 ];
