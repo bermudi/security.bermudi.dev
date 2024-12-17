@@ -15,14 +15,14 @@ interface Testimonial {
 // Array of testimonial data
 const testimonials: Testimonial[] = [
   {
-    content: "El enfoque proactivo de SecureGuard en materia de ciberseguridad ha transformado nuestra manera de gestionar datos sensibles. La experiencia de su equipo es inigualable.",
+    content: "El enfoque proactivo de CipherShield en materia de ciberseguridad ha transformado nuestra manera de gestionar datos sensibles. La experiencia de su equipo es inigualable.",
     author: "Sofía Ramírez",
     position: "CTO",
     company: "Soluciones Tecnológicas del Norte",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
   },
   {
-    content: "El nivel de protección y tranquilidad que hemos recibido desde que nos asociamos con SecureGuard ha sido invaluable para nuestras operaciones.",
+    content: "El nivel de protección y tranquilidad que hemos recibido desde que nos asociamos con CipherShield ha sido invaluable para nuestras operaciones.",
     author: "Ricardo Gómez",
     position: "CISO",
     company: "Finanzas Globales del Sur",
@@ -92,7 +92,7 @@ const Testimonials = () => {
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Testimonios de Clientes</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Escuche a nuestros clientes sobre su experiencia trabajando con SecureGuard.
+            Escuche a nuestros clientes sobre su experiencia trabajando con CipherShield.
           </p>
         </motion.div>
 

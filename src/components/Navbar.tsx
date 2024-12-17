@@ -88,7 +88,7 @@ const Navbar = () => {
             <Shield className={`h-8 w-8 ${isScrolled || isBlogPage ? 'text-blue-600' : 'text-white'}`} />
             {/* Brand name with dynamic color */}
             <span className={`ml-2 text-xl font-bold ${isScrolled || isBlogPage ? 'text-gray-900' : 'text-white'}`}>
-              SecureGuard
+              CipherShield
             </span>
           </div>
 

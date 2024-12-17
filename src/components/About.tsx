@@ -52,18 +52,18 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Acerca de SecureGuard</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Acerca de CipherShield</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Con más de una década de experiencia en ciberseguridad, he protegido a miles de empresas de las amenazas digitales en evolución.
+            Con más de una década de experiencia en ciberseguridad, he protegido a docenas de empresas de las amenazas digitales en evolución.
           </p>
         </motion.div>
 
         {/* Grid of StatCard components */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-          <StatCard icon={Shield} value="500+" label="Clientes Protegidos" />
-          <StatCard icon={Users} value="1" label="Experto en Seguridad" />
-          <StatCard icon={Award} value="99.9%" label="Tasa de Éxito" />
-          <StatCard icon={Building} value="15+" label="Años de Experiencia" />
+          <StatCard icon={Shield} value="50+" label="Clientes Protegidos" />
+          <StatCard icon={Users} value="24/7" label="Monitoreo Continuo" />
+          <StatCard icon={Award} value="Servicio VIP" label="Excepcional Servicio Personalizado" />
+          <StatCard icon={Building} value="10+" label="Años de Experiencia" />
         </div>
 
         {/* Two-column layout for image and text */}
@@ -88,10 +88,10 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              ¿Por qué elegir SecureGuard?
+              ¿Por qué elegir CipherShield?
             </h3>
             <p className="text-gray-600 mb-6">
-              Combino tecnología de vanguardia con inteligencia humana experta para ofrecer soluciones de seguridad integrales que protegen su negocio las 24 horas del día, los 7 días de la semana.
+            Su seguridad empresarial garantizada mediante la perfecta integración de sistemas avanzados y personal especializado, operando permanentemente para asegurar la continuidad y protección de sus activos más valiosos en un entorno empresarial cada vez más desafiante.
             </p>
             {/* List of features with animated list items */}
             <ul className="space-y-4">

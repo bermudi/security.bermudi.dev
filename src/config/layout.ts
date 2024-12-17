@@ -11,7 +11,7 @@ export const layoutConfig = {
       // Footer configuration
     },
     seo: {
-      defaultTitle: 'SecureGuard',
+      defaultTitle: 'CipherShield',
       defaultDescription: '...',
       // ...
     }

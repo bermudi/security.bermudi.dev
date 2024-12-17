@@ -15,25 +15,40 @@ interface CaseStudy {
 // Array of case studies data
 const caseStudies: CaseStudy[] = [
   {
-    title: 'Reestructuración de la Seguridad de una Institución Financiera',
-    description: 'Implementamos medidas de seguridad integrales para un banco líder, protegiendo más de $50 mil millones en activos.',
-    icon: Shield,
-    results: ['Reducción del 85% en incidentes de seguridad', 'Se mantuvo un tiempo de actividad del 99.99%', 'Cero violaciones de datos'],
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80'
-  },
-  {
-    title: 'Protección de Datos en el Sector Salud',
-    description: 'Aseguramos los datos de pacientes para una red de hospitales, garantizando el cumplimiento de HIPAA.',
+    title: 'Caja Popular Mexicana (2023-2024)',
+    description: 'La cooperativa financiera más grande de México enfrentó un devastador ataque de tipo troyano que paralizó sus operaciones.',
     icon: Lock,
-    results: ['Cumplimiento del 100% de HIPAA', 'Protección de más de 1 millón de registros de pacientes', 'Reducción del tiempo de auditoría en un 50%'],
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80'
+    results: [
+      'Más de 3.3 millones de socios afectados',
+      'Servicios SPEI y red de cajeros interrumpidos',
+      '11 meses para recuperación completa',
+      'Control del 37.7% de activos bancarios cooperativos'
+    ],
+    image: 'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&q=80'
   },
   {
-    title: 'Seguridad de la Infraestructura en la Nube',
-    description: 'Modernizamos la seguridad en la nube para una empresa tecnológica Fortune 500.',
+    title: 'Grupo Aeroportuario OMA (2024)',
+    description: 'El operador de 13 aeropuertos sufrió un sofisticado ataque de ransomware que afectó múltiples sistemas.',
     icon: Server,
-    results: ['Reducción de costos del 40%', 'Detección de amenazas un 90% más rápida', 'Migración sin tiempo de inactividad'],
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80'
+    results: [
+      '2.2 TB de información sensible comprometida',
+      'Filtración de registros financieros y datos de empleados',
+      'Implementación exitosa de sistemas de respaldo',
+      'Resistencia al pago de rescate'
+    ],
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80'
+  },
+  {
+    title: 'PEMEX (2019)',
+    description: 'La empresa petrolera estatal mexicana experimentó un importante ataque de ransomware que paralizó sus sistemas.',
+    icon: Shield,
+    results: [
+      'Rescate exigido de 565 Bitcoin ($5 millones)',
+      'Comunicaciones afectadas durante semanas',
+      'Ransomware DoppelPaymer identificado',
+      'Operaciones manuales durante la recuperación'
+    ],
+    image: 'https://images.unsplash.com/photo-1582584116621-6f8e5459d9db?auto=format&fit=crop&q=80'
   }
 ];
 
@@ -104,9 +119,9 @@ const CaseStudies = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Casos de Estudio</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Principales Ciberataques en México</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ejemplos del mundo real de cómo hemos ayudado a las empresas a fortalecer su postura de seguridad.
+            Casos reales que demuestran cómo los ciberdelincuentes han atacado exitosamente algunas de las instituciones más grandes de México.
           </p>
         </motion.div>
 
