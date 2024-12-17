@@ -8,5 +8,6 @@
     "exactOptionalPropertyTypes": true,
     "allowJs": true,
     "types": ["astro/client"]
-  }
+  },
+  "include": ["src/**/*"]
 }
