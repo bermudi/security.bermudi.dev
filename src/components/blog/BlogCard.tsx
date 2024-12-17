@@ -17,7 +17,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
       className="group bg-white dark:bg-secondary-800/50 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-full border border-secondary-100 dark:border-secondary-700"
     >
       {post.image && (
-        <div className="relative overflow-hidden aspect-[16/9]">
+        <div className="relative overflow-hidden aspect-[16/9] -mt-8">
           <img
             src={post.image}
             alt={post.title}
