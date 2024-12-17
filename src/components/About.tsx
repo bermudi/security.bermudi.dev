@@ -54,14 +54,14 @@ const About = () => {
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Acerca de SecureGuard</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Con más de una década de experiencia en ciberseguridad, hemos protegido a miles de empresas de las amenazas digitales en evolución.
+            Con más de una década de experiencia en ciberseguridad, he protegido a miles de empresas de las amenazas digitales en evolución.
           </p>
         </motion.div>
 
         {/* Grid of StatCard components */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           <StatCard icon={Shield} value="500+" label="Clientes Protegidos" />
-          <StatCard icon={Users} value="50+" label="Expertos en Seguridad" />
+          <StatCard icon={Users} value="1" label="Experto en Seguridad" />
           <StatCard icon={Award} value="99.9%" label="Tasa de Éxito" />
           <StatCard icon={Building} value="15+" label="Años de Experiencia" />
         </div>
@@ -91,14 +91,14 @@ const About = () => {
               ¿Por qué elegir SecureGuard?
             </h3>
             <p className="text-gray-600 mb-6">
-              Combinamos tecnología de vanguardia con inteligencia humana experta para ofrecer soluciones de seguridad integrales que protegen su negocio las 24 horas del día, los 7 días de la semana.
+              Combino tecnología de vanguardia con inteligencia humana experta para ofrecer soluciones de seguridad integrales que protegen su negocio las 24 horas del día, los 7 días de la semana.
             </p>
             {/* List of features with animated list items */}
             <ul className="space-y-4">
               {[
                 'Monitoreo y detección de amenazas las 24 horas',
                 'Soluciones de seguridad personalizadas para su negocio',
-                'Equipo experto de profesionales de seguridad certificados',
+                'Experto en seguridad certificado',
                 'Búsqueda proactiva de amenazas y evaluación de vulnerabilidades',
               ].map((item, index) => (
                 <motion.li
