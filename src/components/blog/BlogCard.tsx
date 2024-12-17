@@ -27,18 +27,20 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
         </div>
       )}
       <div className="flex-1 p-6 flex flex-col">
-        {post.tags && post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-1">
-            {post.tags.map(tag => (
-              <span
-                key={tag}
-                className="px-2 py-0.5 text-[0.6875rem] font-medium bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+        <div className="h-6">
+          {post.tags && post.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map(tag => (
+                <span
+                  key={tag}
+                  className="px-2 py-0.5 text-[0.6875rem] font-medium bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
 
         <h3 className="text-xl font-bold text-secondary-900 dark:text-secondary-100 mb-3 min-h-[3rem] group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
           <a href={`/blog/${post.slug}`} className="block">
