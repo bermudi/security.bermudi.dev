@@ -26,13 +26,13 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         </div>
       )}
-      <div className="flex-1 p-6">
+      <div className="flex-1 p-6 flex flex-col">
         {post.tags && post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-1">
             {post.tags.map(tag => (
               <span
                 key={tag}
-                className="px-3 py-1 text-xs font-medium bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full"
+                className="px-2 py-0.5 text-[0.6875rem] font-medium bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full"
               >
                 {tag}
               </span>
@@ -40,18 +40,18 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           </div>
         )}
 
-        <h3 className="text-xl font-bold text-secondary-900 dark:text-secondary-100 mb-3 line-clamp-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+        <h3 className="text-xl font-bold text-secondary-900 dark:text-secondary-100 mb-3 min-h-[3rem] group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
           <a href={`/blog/${post.slug}`} className="block">
             {post.title}
           </a>
         </h3>
 
-        <p className="text-secondary-600 dark:text-secondary-400 mb-6 line-clamp-3">
+        <p className="text-secondary-600 dark:text-secondary-400 mb-6 min-h-[4.5rem] line-clamp-3">
           {post.excerpt}
         </p>
 
-        <div className="mt-auto space-y-4">
-          <div className="flex items-center gap-4 text-sm text-secondary-500 dark:text-secondary-400">
+        <div className="mt-auto">
+          <div className="flex items-center gap-4 text-sm text-secondary-500 dark:text-secondary-400 mb-4">
             <div className="flex items-center">
               <Clock className="w-4 h-4 mr-1.5 text-primary-500" />
               {format(new Date(post.date), 'MMM d, yyyy')}
