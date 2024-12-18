@@ -59,7 +59,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter var', 'sans-serif'],
+        sans: ['Saira', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
     },
