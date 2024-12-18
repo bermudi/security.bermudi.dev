@@ -19,10 +19,9 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15,
-      duration: 0.5
+      type: "tween",
+      duration: 0.4,
+      ease: "easeOut"
     }
   },
   hover: {
@@ -57,8 +56,8 @@ const ServiceCard = ({ icon: Icon, title, description, onClick }: {
 }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.1,
+    rootMargin: '-10px'
   });
 
   return (
@@ -68,8 +67,7 @@ const ServiceCard = ({ icon: Icon, title, description, onClick }: {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       whileHover="hover"
-      layout
-      className="bg-white p-6 rounded-xl shadow-lg transition-all cursor-pointer will-change-transform"
+      className="bg-white p-6 rounded-xl shadow-lg cursor-pointer transform-gpu"
       onClick={onClick}
     >
       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
