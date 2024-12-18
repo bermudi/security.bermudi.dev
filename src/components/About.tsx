@@ -75,9 +75,10 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <img
-              src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&q=80"
+              src="/images/photo-1573164713714-d95e436ab8d6.webp"
               alt="Centro de Operaciones de Seguridad"
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg w-full h-auto"
+              loading="lazy"
             />
           </motion.div>
 
@@ -98,7 +99,7 @@ const About = () => {
               {[
                 'Monitoreo y detección de amenazas las 24 horas',
                 'Soluciones de seguridad personalizadas para su negocio',
-                'Experto en seguridad certificado',
+                'Expertos en seguridad y cifrado de datos',
                 'Búsqueda proactiva de amenazas y evaluación de vulnerabilidades',
               ].map((item, index) => (
                 <motion.li

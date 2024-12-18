@@ -25,7 +25,7 @@ const Hero = () => {
       {/* Background image container */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Background image with reduced opacity for overlay effect */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10" />
+        <div className="absolute inset-0 bg-[url('/images/photo-1558494949-ef010cbdcc31.webp')] bg-cover bg-center opacity-10" />
       </div>
 
       {/* Content container */}

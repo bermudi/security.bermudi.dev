@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';  // Import motion component for animations
 import { useInView } from 'react-intersection-observer';  // Import hook to detect when element is in view
 import { Shield, Lock, Server } from 'lucide-react';  // Import icons for case studies
+import { Image } from 'astro:assets';
 
 // Define the structure of a case study
 interface CaseStudy {
@@ -24,7 +25,7 @@ const caseStudies: CaseStudy[] = [
       '11 meses para recuperación completa',
       'Control del 37.7% de activos bancarios cooperativos'
     ],
-    image: 'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&q=80'
+    image: '/images/photo-1601597111158-2fceff292cdc.webp'
   },
   {
     title: 'Grupo Aeroportuario OMA (2024)',
@@ -36,7 +37,7 @@ const caseStudies: CaseStudy[] = [
       'Implementación exitosa de sistemas de respaldo',
       'Resistencia al pago de rescate'
     ],
-    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80'
+    image: '/images/photo-1436491865332-7a61a109cc05.webp'
   },
   {
     title: 'PEMEX (2019)',
@@ -48,7 +49,7 @@ const caseStudies: CaseStudy[] = [
       'Ransomware DoppelPaymer identificado',
       'Operaciones manuales durante la recuperación'
     ],
-    image: 'https://images.unsplash.com/photo-1594010907349-76a19ff13623?auto=format&fit=crop&q=80'
+    image: '/images/photo-1594010907349-76a19ff13623.webp'
   }
 ];
 
@@ -75,6 +76,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
           src={study.image}
           alt={study.title}
           className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
+          loading="lazy"
         />
       </div>
       {/* Content section */}
