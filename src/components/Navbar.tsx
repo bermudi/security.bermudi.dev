@@ -84,9 +84,19 @@ const Navbar = () => {
             onClick={navigateToHome}
           >
             <Shield className={`h-8 w-8 ${getLogoColorClass()}`} />
-            <span className={`ml-2 text-xl font-bold ${getTextColorClasses()}`}>
-              CipherShield Security
-            </span>
+            <div className="ml-2 flex flex-col leading-tight">
+              <div className="flex items-baseline">
+                <span className={`text-xl font-extrabold tracking-tight ${isNotHomePage || isScrolled ? 'text-gray-900' : 'text-white'}`}>
+                  Cipher
+                </span>
+                <span className={`text-xl font-extrabold tracking-tight ${getLogoColorClass()}`}>
+                  Shield
+                </span>
+              </div>
+              <span className={`text-sm font-medium tracking-wider uppercase ${getTextColorClasses()}`}>
+                Security
+              </span>
+            </div>
           </div>
 
           <div className="hidden md:flex space-x-8">
