@@ -54,7 +54,7 @@ const About = () => {
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-4 font-display">Acerca de CipherShield Security</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Con más de una década de experiencia en ciberseguridad, he protegido a docenas de empresas de las amenazas digitales en evolución.
+            Con más de una década de experiencia en ciberseguridad, hemos protegido a docenas de empresas de las amenazas digitales en evolución.
           </p>
         </motion.div>
 
