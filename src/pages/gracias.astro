@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Gracias | Bermudi Security">
+  <main class="min-h-screen bg-gray-50">
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold text-gray-900 mb-6">
+            ¡Gracias por contactarnos!
+          </h1>
+          <p class="text-xl text-gray-600 mb-8">
+            Hemos recibido tu mensaje y nos pondremos en contacto contigo pronto.
+          </p>
+          <a
+            href="/"
+            class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+            onclick="window.location.href='/'; return false;"
+          >
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Handle navigation on the client side
+  document.addEventListener('DOMContentLoaded', () => {
+    const homeLink = document.querySelector('a[href="/"]');
+    if (homeLink) {
+      homeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = '/';
+      });
+    }
+  });
+</script>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 100%;
+    max-width: calc(100% - 2rem);
+    font-size: 20px;
+    line-height: 1.6;
+  }
+</style> 

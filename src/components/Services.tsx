@@ -1,5 +1,5 @@
 // Import necessary dependencies
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, lazy, Suspense, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Shield, Lock, Server, Cloud, Users, Terminal } from 'lucide-react';
@@ -45,6 +45,21 @@ const ServiceCard = ({ icon: Icon, title, description, onClick }: { icon: any, t
 // Define the main Services component
 const Services = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
+
+  // Listen for custom event from footer
+  useEffect(() => {
+    const handleServicePopup = (event: CustomEvent<{ service: string }>) => {
+      setSelectedService(event.detail.service);
+    };
+
+    // Add event listener
+    window.addEventListener('openServicePopup', handleServicePopup as EventListener);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('openServicePopup', handleServicePopup as EventListener);
+    };
+  }, []);
 
   // Array of service objects
   const services = [

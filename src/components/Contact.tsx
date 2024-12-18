@@ -1,7 +1,7 @@
 // Import necessary dependencies
-import { useState } from 'react'; // For managing form state
-import { motion } from 'framer-motion'; // For animations
-import { Mail, Phone, MapPin, Send } from 'lucide-react'; // Icons for UI
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 // Define the Contact component
 const Contact = () => {
@@ -9,20 +9,21 @@ const Contact = () => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
-    company: '',
-    message: ''
+    $company: '',
+    message: '',
+    honeypot: ''
   });
 
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent default form submission behavior
-    // Log form data (in a real app, you'd send this to a server)
-    console.log('Form submitted:', formState);
-  };
+  // State for redirect URL
+  const [redirectUrl, setRedirectUrl] = useState('');
+
+  // Set redirect URL after component mounts
+  useEffect(() => {
+    setRedirectUrl(`${window.location.origin}/gracias`);
+  }, []);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    // Update form state, spreading the existing state and updating the changed field
     setFormState({
       ...formState,
       [e.target.name]: e.target.value
@@ -42,7 +43,7 @@ const Contact = () => {
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Contáctanos</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Póngase en contacto con nuestros expertos en seguridad para discutir sus necesidades.
+            Póngase en contacto con un experto en seguridad para discutir sus necesidades.
           </p>
         </motion.div>
 
@@ -61,7 +62,7 @@ const Contact = () => {
                 <Mail className="w-6 h-6 text-blue-600 mr-4" />
                 <div>
                   <h4 className="font-semibold">Correo Electrónico</h4>
-                  <p className="text-gray-600">contact@CipherShield.com</p>
+                  <p className="text-gray-600">contacto@ciberseguridad.mx</p>
                 </div>
               </div>
               {/* Phone contact info */}
@@ -69,7 +70,7 @@ const Contact = () => {
                 <Phone className="w-6 h-6 text-blue-600 mr-4" />
                 <div>
                   <h4 className="font-semibold">Teléfono</h4>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
+                  <p className="text-gray-600">+52 (442) 890-8205</p>
                 </div>
               </div>
               {/* Address contact info */}
@@ -77,7 +78,7 @@ const Contact = () => {
                 <MapPin className="w-6 h-6 text-blue-600 mr-4" />
                 <div>
                   <h4 className="font-semibold">Ubicación</h4>
-                  <p className="text-gray-600">123 Security Ave, Cyber City, CS 12345</p>
+                  <p className="text-gray-600">Prolongación Constituyentes, Querétaro, CP 76246</p>
                 </div>
               </div>
             </div>
@@ -89,7 +90,26 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              action="https://api.staticforms.xyz/submit" 
+              method="POST" 
+              className="space-y-6"
+            >
+              {/* Required StaticForms fields */}
+              <input type="hidden" name="accessKey" value="ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c" />
+              <input type="hidden" name="redirectTo" value={redirectUrl} />
+              <input type="hidden" name="replyTo" value="@" />
+              <input type="hidden" name="subject" value="Nuevo mensaje de contacto - Bermudi Security" />
+              
+              {/* Spam protection - hidden field */}
+              <input
+                type="text"
+                name="honeypot"
+                style={{ display: 'none' }}
+                value={formState.honeypot}
+                onChange={handleChange}
+              />
+              
               {/* Name input field */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -122,14 +142,14 @@ const Contact = () => {
               </div>
               {/* Company input field */}
               <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="$company" className="block text-sm font-medium text-gray-700 mb-1">
                   Compañía
                 </label>
                 <input
                   type="text"
-                  id="company"
-                  name="company"
-                  value={formState.company}
+                  id="$company"
+                  name="$company"
+                  value={formState.$company}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
@@ -167,5 +187,4 @@ const Contact = () => {
   );
 };
 
-// Export the Contact component as the default export
 export default Contact;

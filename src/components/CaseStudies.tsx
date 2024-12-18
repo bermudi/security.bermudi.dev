@@ -48,7 +48,7 @@ const caseStudies: CaseStudy[] = [
       'Ransomware DoppelPaymer identificado',
       'Operaciones manuales durante la recuperación'
     ],
-    image: 'https://images.unsplash.com/photo-1582584116621-6f8e5459d9db?auto=format&fit=crop&q=80'
+    image: 'https://images.unsplash.com/photo-1594010907349-76a19ff13623?auto=format&fit=crop&q=80'
   }
 ];
 
