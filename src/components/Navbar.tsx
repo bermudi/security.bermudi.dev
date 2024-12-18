@@ -12,10 +12,7 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    // Check if we're on any page other than home
     setIsNotHomePage(window.location.pathname !== '/');
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -57,18 +54,37 @@ const Navbar = () => {
 
   const navItems = ['servicios', 'información', 'casos', 'testimonios', 'contacto', 'blog'];
 
-  const navClasses = `fixed w-full z-50 transition-all duration-300 bg-white ${isScrolled ? 'shadow-lg' : ''}`;
+  const getNavClasses = () => {
+    if (isNotHomePage) {
+      return `fixed w-full z-50 transition-all duration-300 bg-white ${isScrolled ? 'shadow-lg' : ''}`;
+    }
+    return `fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`;
+  };
+
+  const getTextColorClasses = (isButton = false) => {
+    if (isNotHomePage || isScrolled) {
+      return isButton ? 'text-gray-700 hover:text-blue-600' : 'text-gray-900';
+    }
+    return 'text-white hover:text-gray-200';
+  };
+
+  const getLogoColorClass = () => {
+    if (isNotHomePage || isScrolled) {
+      return 'text-blue-600';
+    }
+    return 'text-white';
+  };
 
   return (
-    <nav className={navClasses}>
+    <nav className={getNavClasses()}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div 
             className="flex items-center cursor-pointer" 
             onClick={navigateToHome}
           >
-            <Shield className="h-8 w-8 text-blue-600" />
-            <span className="ml-2 text-xl font-bold text-gray-900">
+            <Shield className={`h-8 w-8 ${getLogoColorClass()}`} />
+            <span className={`ml-2 text-xl font-bold ${getTextColorClasses()}`}>
               CipherShield Security
             </span>
           </div>
@@ -78,7 +94,7 @@ const Navbar = () => {
               <button
                 key={item}
                 onClick={() => scrollTo(item)}
-                className="text-gray-700 hover:text-blue-600 capitalize transition-colors"
+                className={`${getTextColorClasses(true)} capitalize transition-colors`}
               >
                 {item}
               </button>
@@ -88,7 +104,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-blue-600"
+              className={getTextColorClasses(true)}
             >
               {isMenuOpen
                 ? <X size={24} />
