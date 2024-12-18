@@ -103,13 +103,13 @@ const About = () => {
               ].map((item, index) => (
                 <motion.li
                   key={index}
-                  initial={{ opacity: 0, x: 20 }} // Start invisible and slightly to the right
-                  whileInView={{ opacity: 1, x: 0 }} // Animate to full opacity and correct position when in view
-                  transition={{ duration: 0.3, delay: index * 0.1 }} // Stagger the animations
-                  className="flex items-center text-gray-700"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  className="flex items-start space-x-3 text-gray-700"
                 >
-                  <Shield className="w-5 h-5 text-blue-600 mr-2" />
-                  {item}
+                  <Shield className="w-6 h-6 flex-shrink-0 mt-0.5 text-blue-600" />
+                  <span className="flex-1">{item}</span>
                 </motion.li>
               ))}
             </ul>
