@@ -1,6 +1,5 @@
-// Import necessary dependencies
 import React, { useState, lazy, Suspense, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Shield, Lock, Server, Cloud, Users, Terminal } from 'lucide-react';
 import ServicePopup from './ServicePopup';
@@ -13,26 +12,66 @@ const CloudSecurityContent = lazy(() => import('../content/services/cloud-securi
 const SecurityTrainingContent = lazy(() => import('../content/services/security-training'));
 const PenetrationTestingContent = lazy(() => import('../content/services/penetration-testing'));
 
-// Define the ServiceCard component
-const ServiceCard = ({ icon: Icon, title, description, onClick }: { icon: any, title: string, description: string, onClick: () => void }) => {
-  // Use the useInView hook to detect when the component is visible
+// Animation variants for consistent reuse
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+      duration: 0.5
+    }
+  },
+  hover: {
+    scale: 1.03,
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 10
+    }
+  }
+};
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+      duration: 0.6
+    }
+  }
+};
+
+const ServiceCard = ({ icon: Icon, title, description, onClick }: { 
+  icon: any, 
+  title: string, 
+  description: string, 
+  onClick: () => void 
+}) => {
   const [ref, inView] = useInView({
-    triggerOnce: true, // Only trigger the animation once
-    threshold: 0.1, // Trigger when 10% of the component is visible
+    triggerOnce: true,
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
   });
 
   return (
-    // Use motion.div for animations
     <motion.div
-      ref={ref} // Attach the ref for intersection observer
-      initial={{ opacity: 0, y: 50 }} // Initial state: invisible and 50px below
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} // Animate when in view
-      transition={{ duration: 0.5 }} // Animation duration
-      whileHover={{ scale: 1.05 }} // Scale up slightly on hover
-      className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer"
+      ref={ref}
+      variants={cardVariants}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      whileHover="hover"
+      layout
+      className="bg-white p-6 rounded-xl shadow-lg transition-all cursor-pointer will-change-transform"
       onClick={onClick}
     >
-      {/* Icon container */}
       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
         <Icon className="w-6 h-6 text-blue-600" />
       </div>
@@ -42,26 +81,20 @@ const ServiceCard = ({ icon: Icon, title, description, onClick }: { icon: any, t
   );
 };
 
-// Define the main Services component
 const Services = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
-  // Listen for custom event from footer
   useEffect(() => {
     const handleServicePopup = (event: CustomEvent<{ service: string }>) => {
       setSelectedService(event.detail.service);
     };
 
-    // Add event listener
     window.addEventListener('openServicePopup', handleServicePopup as EventListener);
-
-    // Cleanup
     return () => {
       window.removeEventListener('openServicePopup', handleServicePopup as EventListener);
     };
   }, []);
 
-  // Array of service objects
   const services = [
     {
       icon: Shield,
@@ -101,48 +134,75 @@ const Services = () => {
     },
   ];
 
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-20 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Animated section title */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          ref={ref}
+          variants={fadeInUp}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 font-display">Nuestros Servicios</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 font-display">
+            Nuestros Servicios
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Soluciones de seguridad integrales diseñadas para proteger su negocio en el complejo panorama digital actual.
+            Soluciones de seguridad integrales diseñadas para proteger su negocio 
+            en el complejo panorama digital actual.
           </p>
         </motion.div>
 
-        {/* Grid layout for service cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Map through services array and render ServiceCard for each */}
-          {services.map((service) => (
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+        >
+          {services.map((service, index) => (
             <ServiceCard
               key={service.title}
               {...service}
               onClick={() => setSelectedService(service.title)}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
 
-      {/* Service Popup */}
-      {selectedService && (
-        <ServicePopup
-          isOpen={!!selectedService}
-          onClose={() => setSelectedService(null)}
-          title={selectedService}
-          content={
-            <Suspense fallback={<div>Cargando...</div>}>
-              {React.createElement(services.find(s => s.title === selectedService)?.content || (() => null))}
-            </Suspense>
-          }
-        />
-      )}
+      <AnimatePresence mode="wait">
+        {selectedService && (
+          <ServicePopup
+            isOpen={!!selectedService}
+            onClose={() => setSelectedService(null)}
+            title={selectedService}
+            content={
+              <Suspense fallback={
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex items-center justify-center p-8"
+                >
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600" />
+                </motion.div>
+              }>
+                {React.createElement(
+                  services.find(s => s.title === selectedService)?.content || (() => null)
+                )}
+              </Suspense>
+            }
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

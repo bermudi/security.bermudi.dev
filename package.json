@@ -18,7 +18,7 @@
     "@fontsource/oswald": "^5.1.0",
     "@fontsource/saira": "^5.1.0",
     "date-fns": "^3.3.1",
-    "framer-motion": "^11.0.8",
+    "framer-motion": "^11.15.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.344.0",
     "marked": "^15.0.4",
