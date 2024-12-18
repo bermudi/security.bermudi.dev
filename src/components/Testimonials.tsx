@@ -90,7 +90,7 @@ const Testimonials = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Testimonios de Clientes</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 font-display">Testimonios de Clientes</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Escuche a nuestros clientes sobre su experiencia trabajando con CipherShield Security.
           </p>

@@ -111,7 +111,7 @@ const Services = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Nuestros Servicios</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 font-display">Nuestros Servicios</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Soluciones de seguridad integrales diseñadas para proteger su negocio en el complejo panorama digital actual.
           </p>

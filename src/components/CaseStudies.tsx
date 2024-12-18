@@ -119,7 +119,7 @@ const CaseStudies = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Principales Ciberataques en México</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 font-display">Principales Ciberataques en México</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Casos reales que demuestran cómo los ciberdelincuentes han atacado exitosamente algunas de las instituciones más grandes de México.
           </p>

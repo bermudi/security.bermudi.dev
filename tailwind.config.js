@@ -43,14 +43,44 @@ export default {
           css: {
             maxWidth: '65ch',
             color: 'inherit',
+            fontFamily: 'Commissioner, sans-serif',
+            h1: {
+              fontFamily: 'Saira, sans-serif',
+              fontWeight: '600',
+            },
+            h2: {
+              fontFamily: 'Saira, sans-serif',
+              fontWeight: '600',
+            },
+            h3: {
+              fontFamily: 'Saira, sans-serif',
+              fontWeight: '600',
+            },
+            h4: {
+              fontFamily: 'Saira, sans-serif',
+              fontWeight: '600',
+            },
+            h5: {
+              fontFamily: 'Saira, sans-serif',
+              fontWeight: '600',
+            },
+            h6: {
+              fontFamily: 'Saira, sans-serif',
+              fontWeight: '600',
+            },
+            p: {
+              fontFamily: 'Commissioner, sans-serif',
+            },
+            strong: {
+              color: 'inherit',
+              fontFamily: 'Saira, sans-serif',
+              fontWeight: '600',
+            },
             a: {
               color: '#0ea5e9',
               '&:hover': {
                 color: '#0369a1',
               },
-            },
-            strong: {
-              color: 'inherit',
             },
             code: {
               color: '#ef4444',
@@ -59,7 +89,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Saira', 'sans-serif'],
+        sans: ['Commissioner', 'sans-serif'],
+        display: ['Saira', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
     },
