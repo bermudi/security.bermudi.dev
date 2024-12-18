@@ -3,8 +3,8 @@ import React from 'react';
 const DataProtectionContent: React.FC = () => (
   <>
     <p className="text-gray-700 mb-8">
-      La protección de datos es esencial para mantener la confianza de sus clientes y cumplir con las regulaciones.
-      Nuestros servicios de protección de datos están diseñados para asegurar la confidencialidad, integridad y disponibilidad de su información.
+      La protección de datos es esencial para mantener la confianza de tus clientes y cumplir con las regulaciones.
+      Nuestros servicios de protección de datos están diseñados para garantizar la confidencialidad, integridad y disponibilidad de tu información.
     </p>
 
     <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Qué Ofrecemos?</h2>

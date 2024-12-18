@@ -3,7 +3,7 @@ import React from 'react';
 const ThreatDetectionContent: React.FC = () => (
   <>
     <p className="text-gray-700 mb-8">
-      En el panorama actual de ciberseguridad, la detección temprana de amenazas es fundamental para proteger su negocio.
+      En el panorama actual de ciberseguridad, la detección temprana de amenazas es fundamental para proteger tu negocio.
       Nuestros servicios de detección de amenazas están diseñados para identificar y neutralizar las amenazas antes de que puedan causar daños.
     </p>
 

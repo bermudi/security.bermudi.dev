@@ -1,5 +1,5 @@
 ---
-title: 'Mejores Prácticas de Seguridad en la Nube'
+title: 'Mejores prácticas de seguridad en la nube'
 slug: 'cloud-security-best-practices'
 excerpt: 'Medidas de seguridad esenciales para proteger tu infraestructura y aplicaciones en la nube.'
 author: 'Sarah Johnson'

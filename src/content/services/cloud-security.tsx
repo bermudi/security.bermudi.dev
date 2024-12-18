@@ -3,8 +3,8 @@ import React from 'react';
 const CloudSecurityContent: React.FC = () => (
   <>
     <p className="text-gray-700 mb-8">
-      La seguridad en la nube es fundamental para proteger sus datos y aplicaciones en entornos de nube.
-      Nuestros servicios de seguridad en la nube están diseñados para asegurar la confidencialidad, integridad y disponibilidad de sus recursos en la nube.
+      La seguridad en la nube es esencial para proteger tus datos y aplicaciones en entornos de nube.
+      Nuestros servicios de seguridad en la nube están diseñados para garantizar la confidencialidad, integridad y disponibilidad de tus recursos en la nube.
     </p>
 
     <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Qué Ofrecemos?</h2>

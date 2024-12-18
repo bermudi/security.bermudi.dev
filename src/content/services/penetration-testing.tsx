@@ -3,8 +3,8 @@ import React from 'react';
 const PenetrationTestingContent: React.FC = () => (
   <>
     <p className="text-gray-700 mb-8">
-      Las pruebas de penetración son esenciales para evaluar la seguridad de su infraestructura y aplicaciones.
-      Nuestros servicios de pruebas de penetración están diseñados para identificar vulnerabilidades y evaluar la efectividad de sus controles de seguridad.
+      Las pruebas de penetración son esenciales para evaluar la seguridad de tu infraestructura y aplicaciones.
+      Nuestros servicios de pruebas de penetración están diseñados para identificar vulnerabilidades y evaluar la efectividad de tus controles de seguridad.
     </p>
 
     <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Qué Ofrecemos?</h2>

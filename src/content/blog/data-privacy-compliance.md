@@ -1,5 +1,5 @@
 ---
-title: "Navegando por el Cumplimiento de la Privacidad de Datos"
+title: "Navegando por el cumplimiento de la privacidad de datos"
 slug: 'data-privacy-compliance'
 excerpt: "Entendiendo las leyes de privacidad de datos y asegurando su cumplimiento."
 author: "David Lee"

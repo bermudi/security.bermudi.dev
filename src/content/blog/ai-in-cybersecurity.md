@@ -1,5 +1,5 @@
 ---
-title: "El Auge de la IA en la Ciberseguridad"
+title: "El auge de la IA en la ciberseguridad"
 excerpt: "Explora cómo la inteligencia artificial está revolucionando la ciberseguridad, desde la detección de amenazas hasta la respuesta a incidentes."
 author: "Michael Chen"
 date: "2024-02-25"

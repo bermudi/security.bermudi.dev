@@ -3,8 +3,8 @@ import React from 'react';
 const SecurityTrainingContent: React.FC = () => (
   <>
     <p className="text-gray-700 mb-8">
-      La capacitación en seguridad es fundamental para crear una cultura de seguridad en su organización.
-      Nuestros programas de capacitación están diseñados para educar a sus empleados sobre las mejores prácticas de seguridad y los riesgos cibernéticos.
+      La capacitación en seguridad es fundamental para crear una cultura de seguridad en tu organización.
+      Nuestros programas de capacitación están diseñados para educar a tus empleados sobre las mejores prácticas de seguridad y los riesgos cibernéticos.
     </p>
 
     <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Qué Ofrecemos?</h2>

@@ -3,8 +3,8 @@ import React from 'react';
 const NetworkSecurityContent: React.FC = () => (
   <>
     <p className="text-gray-700 mb-8">
-      La seguridad de la red es fundamental para proteger su infraestructura de ataques cibernéticos.
-      Nuestros servicios de seguridad de la red están diseñados para asegurar la integridad, confidencialidad y disponibilidad de su red.
+      La seguridad de la red es fundamental para proteger tu infraestructura de ataques cibernéticos.
+      Nuestros servicios de seguridad de la red están diseñados para garantizar la integridad, confidencialidad y disponibilidad de tu red.
     </p>
 
     <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Qué Ofrecemos?</h2>

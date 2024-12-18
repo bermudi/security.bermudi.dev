@@ -1,5 +1,5 @@
 ---
-title: "Asegurando Entornos de Trabajo Remoto"
+title: "Asegurando entornos de trabajo remoto"
 slug: 'remote-work-security'
 excerpt: "Mejores prácticas para mantener la ciberseguridad durante el trabajo remoto."
 author: "Emily Carter"
