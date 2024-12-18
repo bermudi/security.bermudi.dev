@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Shield, Menu, X } from 'lucide-react';
 
+// Add font imports
+import '@fontsource/oswald';
+import '@fontsource/dm-serif-display';
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -83,13 +87,13 @@ const Navbar = () => {
             className="flex items-center cursor-pointer" 
             onClick={navigateToHome}
           >
-            <Shield className={`h-8 w-8 ${getLogoColorClass()}`} />
-            <div className="ml-2 flex flex-col leading-tight">
+            <Shield className={`h-10 w-10 ${getLogoColorClass()}`} />
+            <div className="ml-3 flex flex-col leading-tight">
               <div className="flex items-baseline">
-                <span className={`text-xl font-extrabold tracking-tight ${isNotHomePage || isScrolled ? 'text-gray-900' : 'text-white'}`}>
+                <span className={`text-2xl font-medium tracking-tight font-['Oswald'] ${isNotHomePage || isScrolled ? 'text-gray-900' : 'text-white'}`}>
                   Cipher
                 </span>
-                <span className={`text-xl font-extrabold tracking-tight ${getLogoColorClass()}`}>
+                <span className={`text-2xl tracking-tight font-['DM_Serif_Display'] ${getLogoColorClass()}`}>
                   Shield
                 </span>
               </div>
