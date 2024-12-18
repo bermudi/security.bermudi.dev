@@ -11,8 +11,8 @@ export const layoutConfig = {
       // Footer configuration
     },
     seo: {
-      defaultTitle: 'CipherShield',
-      defaultDescription: '...',
+      defaultTitle: 'CipherShield Security',
+      defaultDescription: 'CipherShield Security es una empresa de ciberseguridad que ofrece soluciones de seguridad informática para proteger a las empresas de las amenazas digitales.',
       // ...
     }
   };

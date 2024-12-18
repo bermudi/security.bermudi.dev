@@ -99,7 +99,7 @@ const Contact = () => {
               <input type="hidden" name="accessKey" value="ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c" />
               <input type="hidden" name="redirectTo" value={redirectUrl} />
               <input type="hidden" name="replyTo" value="@" />
-              <input type="hidden" name="subject" value="Nuevo mensaje de contacto - Bermudi Security" />
+              <input type="hidden" name="subject" value="Nuevo mensaje de contacto - CypherShield Security" />
               
               {/* Spam protection - hidden field */}
               <input

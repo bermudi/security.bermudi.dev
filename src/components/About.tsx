@@ -52,7 +52,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Acerca de CipherShield</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Acerca de CipherShield Security</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Con más de una década de experiencia en ciberseguridad, he protegido a docenas de empresas de las amenazas digitales en evolución.
           </p>
@@ -88,7 +88,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              ¿Por qué elegir CipherShield?
+              ¿Por qué elegir CipherShield Security?
             </h3>
             <p className="text-gray-600 mb-6">
             Su seguridad empresarial garantizada mediante la perfecta integración de sistemas avanzados y personal especializado, operando permanentemente para asegurar la continuidad y protección de sus activos más valiosos en un entorno empresarial cada vez más desafiante.
