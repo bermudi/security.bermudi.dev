@@ -31,7 +31,7 @@ Al crear una cuenta con nosotros:
 
 ### 4. Propiedad Intelectual
 
-- Todo el contenido y materiales son propiedad de Bermudi o sus licenciantes
+- Todo el contenido y materiales son propiedad de CypherShield Security o sus licenciantes
 - No está permitido copiar, modificar o distribuir nuestro contenido sin autorización
 - Respetamos los derechos de propiedad intelectual de terceros
 
@@ -59,12 +59,12 @@ Podemos terminar o suspender el acceso a nuestros servicios:
 
 ### 8. Ley Aplicable
 
-Estos términos se rigen por las leyes de [jurisdicción] y cualquier disputa se resolverá en los tribunales de dicha jurisdicción.
+Estos términos se rigen por las leyes de México y/o Querétaro y cualquier disputa se resolverá en los tribunales de dicha jurisdicción.
 
 ### 9. Contacto
 
 Para preguntas sobre estos términos:
 
-- Email: legal@bermudi.dev
+- Email: contacto@ciberseguridad.mx
 - Formulario web: [formulario de contacto]
-- Dirección postal: [dirección] 
+- Dirección postal: Prolongación Constituyentes, Querétaro, CP 76246

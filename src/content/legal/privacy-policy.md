@@ -56,10 +56,10 @@ No vendemos tu información personal. Podemos compartir información con:
 
 Para ejercer tus derechos o realizar consultas sobre privacidad:
 
-- Email: privacy@bermudi.dev
-- Formulario web: [formulario de contacto]
-- Dirección postal: [dirección]
+- Email: contacto@ciberseguridad.mx
+- Formulario web: [Contacto](/#contact)
+- Dirección postal: Prolongación Constituyentes, Querétaro, CP 76246
 
 ### 7. Actualizaciones
 
-Esta política puede actualizarse periódicamente. La fecha de última actualización se mostrará al principio del documento. 
+Esta política puede actualizarse periódicamente. La fecha de última actualización se mostrará al principio del documento.

@@ -10,11 +10,9 @@ image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format
 
 ### 1. Información de la Empresa
 
-- Nombre: Bermudi Security Consulting
-- Domicilio social: [dirección completa]
-- CIF/NIF: [número fiscal]
-- Email: info@bermudi.dev
-- Registro Mercantil: [datos de registro]
+- Nombre: CypherShield Security
+- Domicilio social: Prolongación Constituyentes, Querétaro, CP 76246
+- Email: contacto@ciberseguridad.mx
 
 ### 2. Objeto
 
@@ -24,7 +22,7 @@ Este aviso legal regula el uso del sitio web bermudi.dev, que la empresa pone a 
 
 #### 3.1 Titularidad
 
-- El sitio web, incluyendo su código fuente, diseños, logos, textos y gráficos es propiedad de Bermudi
+- El sitio web, incluyendo su código fuente, diseños, logos, textos y gráficos es propiedad de CypherShield Security
 - Todos los derechos están reservados
 - Cualquier uso no autorizado será perseguido legalmente
 
@@ -65,7 +63,7 @@ El usuario se compromete a:
 ### 6. Legislación Aplicable
 
 - Este aviso legal se rige por la legislación española
-- Cualquier controversia se someterá a los tribunales de [jurisdicción]
+- Cualquier controversia se someterá a los tribunales de México y/o Querétaro
 
 ### 7. Modificaciones
 
@@ -79,6 +77,6 @@ Nos reservamos el derecho de:
 
 Para cualquier consulta relacionada con este aviso legal:
 
-- Email: legal@bermudi.dev
-- Teléfono: [número]
-- Dirección: [dirección postal] 
+- Email: contacto@ciberseguridad.mx
+- Teléfono: +52 (442) 890-8205
+- Dirección: Prolongación Constituyentes, Querétaro, CP 76246
