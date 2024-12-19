@@ -25,11 +25,11 @@ const cardVariants = {
     }
   },
   hover: {
-    scale: 1.03,
+    y: -4,
     transition: {
-      type: "spring",
-      stiffness: 400,
-      damping: 10
+      type: "tween",
+      duration: 0.15,
+      ease: [0.4, 0, 0.2, 1]
     }
   }
 };
@@ -67,7 +67,7 @@ const ServiceCard = ({ icon: Icon, title, description, onClick }: {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       whileHover="hover"
-      className="bg-white p-6 rounded-xl shadow-lg cursor-pointer transform-gpu"
+      className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 ease-out cursor-pointer transform-gpu"
       onClick={onClick}
     >
       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">

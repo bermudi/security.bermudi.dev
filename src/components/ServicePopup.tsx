@@ -17,15 +17,19 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, title, con
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           onClick={onClose}
         >
           <motion.div
-            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            initial={{ scale: 0.98, opacity: 0, y: 8 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: 20 }}
-            transition={{ type: "spring", duration: 0.5 }}
+            exit={{ scale: 0.98, opacity: 0, y: 8 }}
+            transition={{ 
+              type: "tween", 
+              duration: 0.2,
+              ease: [0.4, 0, 0.2, 1]
+            }}
             className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden shadow-2xl relative"
             onClick={(e) => e.stopPropagation()}
           >
