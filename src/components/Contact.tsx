@@ -1,5 +1,21 @@
+// Type declarations for Cloudflare Turnstile
+interface Turnstile {
+  render: (
+    container: HTMLElement | string,
+    options: {
+      sitekey: string;
+      callback: (token: string) => void;
+    }
+  ) => void;
+}
+
+declare global {
+  interface Window {
+    turnstile?: Turnstile;
+  }
+}
 // Import necessary dependencies
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
@@ -17,9 +33,38 @@ const Contact = () => {
   // State for redirect URL
   const [redirectUrl, setRedirectUrl] = useState('');
 
+  // New state for Cloudflare Turnstile token
+  const [turnstileToken, setTurnstileToken] = useState('');
+
+  // Ref for Turnstile widget container
+  const turnstileRef = useRef<HTMLDivElement>(null);
   // Set redirect URL after component mounts
   useEffect(() => {
     setRedirectUrl(`${window.location.origin}/gracias`);
+  }, []);
+
+  // Load Cloudflare Turnstile script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  // Render Turnstile widget once script is loaded
+  useEffect(() => {
+    if (window.turnstile && turnstileRef.current) {
+      window.turnstile.render(turnstileRef.current, {
+        sitekey: '0x4AAAAAAA3FMtq4reckeIMT', // Replace with your actual site key
+        callback: (token: string) => {
+          setTurnstileToken(token);
+        },
+      });
+    }
   }, []);
 
   // Handle input changes
@@ -28,6 +73,17 @@ const Contact = () => {
       ...formState,
       [e.target.name]: e.target.value
     });
+  };
+
+  // Handle form submission
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!turnstileToken) {
+      alert('Por favor, complete el desafío de seguridad');
+      return;
+    }
+    // If Turnstile challenge is completed, proceed with form submission
+    e.currentTarget.submit();
   };
 
   // Render the component
@@ -94,13 +150,14 @@ const Contact = () => {
               action="https://api.staticforms.xyz/submit" 
               method="POST" 
               className="space-y-6"
+              onSubmit={handleSubmit}
             >
               {/* Required StaticForms fields */}
               <input type="hidden" name="accessKey" value="ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c" />
               <input type="hidden" name="redirectTo" value={redirectUrl} />
               <input type="hidden" name="replyTo" value="@" />
               <input type="hidden" name="subject" value="Nuevo mensaje de contacto - CypherShield Security" />
-              
+
               {/* Spam protection - hidden field */}
               <input
                 type="text"
@@ -109,7 +166,7 @@ const Contact = () => {
                 value={formState.honeypot}
                 onChange={handleChange}
               />
-              
+
               {/* Name input field */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -169,6 +226,10 @@ const Contact = () => {
                   required
                 />
               </div>
+
+              {/* Cloudflare Turnstile widget */}
+              <div ref={turnstileRef}></div>
+
               {/* Submit button with animation */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
