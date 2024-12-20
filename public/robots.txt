@@ -1,9 +1,9 @@
-# https://security.bermudi.dev robots.txt
+# https://ciberdefensa.mx robots.txt
 User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://security.bermudi.dev/sitemap.xml
+Sitemap: https://ciberdefensa.mx/sitemap.xml
 
 # Disallow admin and private paths
 Disallow: /admin/

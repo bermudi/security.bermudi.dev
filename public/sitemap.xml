@@ -4,25 +4,25 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://security.bermudi.dev/</loc>
+    <loc>https://ciberdefensa.mx/</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://security.bermudi.dev/blog</loc>
+    <loc>https://ciberdefensa.mx/blog</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://security.bermudi.dev/legal/privacy</loc>
+    <loc>https://ciberdefensa.mx/legal/privacy</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://security.bermudi.dev/legal/terms</loc>
+    <loc>https://ciberdefensa.mx/legal/terms</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
