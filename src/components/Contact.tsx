@@ -155,7 +155,7 @@ const Contact = () => {
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-4 font-display">Contáctanos</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Póngase en contacto con nuestro equipo de expertos en seguridad para discutir sus necesidades.
+            Ponte en contacto con nuestro equipo de expertos en seguridad para discutir tus necesidades.
           </p>
         </motion.div>
 

@@ -98,7 +98,7 @@ const Navbar = () => {
                 </span>
               </div>
               <span className={`text-sm font-medium tracking-wider uppercase ${getTextColorClasses()}`}>
-                Security
+                Ciberdefensa
               </span>
             </div>
           </div>
