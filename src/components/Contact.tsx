@@ -17,21 +17,17 @@ interface TurnstileOptions {
   'error-callback'?: () => void;
   'expired-callback'?: () => void;
   'timeout-callback'?: () => void;
-  'before-interactive-callback'?: () => void;
-  'after-interactive-callback'?: () => void;
   size?: 'normal' | 'compact' | 'flexible';
   appearance?: 'always' | 'execute' | 'interaction-only';
-  retry?: 'auto' | 'never';
-  'refresh-expired'?: 'auto' | 'manual' | 'never';
   language?: string;
 }
 
 declare global {
   interface Window {
     turnstile?: Turnstile;
-    onLoadTurnstile?: () => void;
   }
 }
+
 // Import necessary dependencies
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
@@ -55,8 +51,6 @@ const Contact = () => {
   const [turnstileToken, setTurnstileToken] = useState('');
   const [turnstileError, setTurnstileError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [scriptLoaded, setScriptLoaded] = useState(false);
-  const widgetId = useRef<string>();
   const turnstileRef = useRef<HTMLDivElement>(null);
 
   // Set redirect URL after component mounts
@@ -64,94 +58,60 @@ const Contact = () => {
     setRedirectUrl(`${window.location.origin}/gracias`);
   }, []);
 
-  // Load Cloudflare Turnstile script
+  // Load Cloudflare Turnstile script and initialize widget
   useEffect(() => {
-    const existingScript = document.querySelector('script[src*="turnstile"]');
-    if (existingScript) {
-      setScriptLoaded(true);
+    // Skip if script is already loaded
+    if (document.querySelector('script[src*="turnstile"]')) {
       return;
     }
 
     const script = document.createElement('script');
-    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
     script.async = true;
-    script.defer = true;
-
-    const handleScriptLoad = () => {
-      setScriptLoaded(true);
-    };
-
-    script.addEventListener('load', handleScriptLoad);
-    document.body.appendChild(script);
+    document.head.appendChild(script);
 
     return () => {
-      script.removeEventListener('load', handleScriptLoad);
       if (script.parentNode) {
         script.parentNode.removeChild(script);
-      }
-      if (window.turnstile && widgetId.current) {
-        window.turnstile.remove(widgetId.current);
       }
     };
   }, []);
 
-  // Render Turnstile widget once script is loaded
+  // Initialize Turnstile when the script is loaded
   useEffect(() => {
-    const renderWidget = () => {
-      if (scriptLoaded && window.turnstile && turnstileRef.current) {
-        // Remove existing widget if any
-        if (widgetId.current) {
-          window.turnstile.remove(widgetId.current);
-        }
-
-        try {
-          widgetId.current = window.turnstile.render(turnstileRef.current, {
-            sitekey: '0x4AAAAAAA3FMtq4reckeIMT',
-            theme: 'auto',
-            size: 'normal',
-            appearance: 'always',
-            'refresh-expired': 'auto',
-            retry: 'auto',
-            language: 'es',
-            callback: (token: string) => {
-              setTurnstileToken(token);
-              setTurnstileError(null);
-            },
-            'error-callback': () => {
-              setTurnstileError('Error al verificar el desafío de seguridad');
-              setTurnstileToken('');
-            },
-            'expired-callback': () => {
-              setTurnstileToken('');
-              if (widgetId.current) {
-                window.turnstile?.reset(widgetId.current);
-              }
-            },
-            'timeout-callback': () => {
-              setTurnstileError('El tiempo de verificación ha expirado');
-              setTurnstileToken('');
-              if (widgetId.current) {
-                window.turnstile?.reset(widgetId.current);
-              }
-            }
-          });
-        } catch (error) {
-          console.error('Error rendering Turnstile:', error);
-          setTurnstileError('Error al cargar el widget de seguridad');
-        }
+    const initTurnstile = () => {
+      if (window.turnstile && turnstileRef.current) {
+        window.turnstile.render(turnstileRef.current, {
+          sitekey: '0x4AAAAAAA3FMtq4reckeIMT',
+          theme: 'auto',
+          callback: (token) => {
+            setTurnstileToken(token);
+            setTurnstileError(null);
+          },
+          'error-callback': () => {
+            setTurnstileError('Error al verificar el desafío de seguridad');
+            setTurnstileToken('');
+          }
+        });
       }
     };
 
-    // Try to render immediately if script is already loaded
-    renderWidget();
+    // Check if turnstile is already available
+    if (window.turnstile) {
+      initTurnstile();
+    } else {
+      // If not, wait for script to load
+      const checkTurnstile = setInterval(() => {
+        if (window.turnstile) {
+          initTurnstile();
+          clearInterval(checkTurnstile);
+        }
+      }, 100);
 
-    // Also try again after a short delay to ensure window.turnstile is available
-    const timeoutId = setTimeout(renderWidget, 1000);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [scriptLoaded]);
+      // Cleanup
+      return () => clearInterval(checkTurnstile);
+    }
+  }, []);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -168,20 +128,12 @@ const Contact = () => {
     setTurnstileError(null);
 
     try {
-      // Check if Turnstile token exists
       if (!turnstileToken) {
         setTurnstileError('Por favor, complete el desafío de seguridad');
         return;
       }
 
-      // Check if token is expired
-      if (widgetId.current && window.turnstile?.isExpired(widgetId.current)) {
-        setTurnstileError('La verificación ha expirado. Por favor, inténtelo de nuevo');
-        window.turnstile?.reset(widgetId.current);
-        return;
-      }
-
-      // If all validations pass, submit the form
+      // If validation passes, submit the form
       e.currentTarget.submit();
     } catch (error) {
       setTurnstileError('Error al enviar el formulario');
@@ -337,11 +289,6 @@ const Contact = () => {
                   ref={turnstileRef}
                   className="flex justify-center"
                 />
-                {!scriptLoaded && (
-                  <p className="text-gray-500 text-sm text-center mt-2">
-                    Cargando verificación de seguridad...
-                  </p>
-                )}
                 {turnstileError && (
                   <p className="text-red-500 text-sm mt-2 text-center">{turnstileError}</p>
                 )}
@@ -352,11 +299,11 @@ const Contact = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                disabled={isLoading || !turnstileToken || !scriptLoaded}
+                disabled={isLoading || !turnstileToken}
                 className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="w-5 h-5 mr-2" />
-                {!scriptLoaded ? 'Cargando...' : isLoading ? 'Enviando...' : 'Enviar Mensaje'}
+                {isLoading ? 'Enviando...' : 'Enviar Mensaje'}
               </motion.button>
             </form>
           </motion.div>
