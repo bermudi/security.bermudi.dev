@@ -1,0 +1,17 @@
+# https://security.bermudi.dev robots.txt
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://security.bermudi.dev/sitemap.xml
+
+# Disallow admin and private paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Crawl delay
+Crawl-delay: 10 
