@@ -82,7 +82,7 @@ const Contact = () => {
     const initTurnstile = () => {
       if (window.turnstile && turnstileRef.current) {
         window.turnstile.render(turnstileRef.current, {
-          sitekey: '0x4AAAAAAA3FMtq4reckeIMT',
+          sitekey: '0x4AAAAAAA3FMv6GZiqocMUxVwScNg3qIKw',
           theme: 'auto',
           callback: (token) => {
             setTurnstileToken(token);
@@ -130,11 +130,26 @@ const Contact = () => {
     try {
       if (!turnstileToken) {
         setTurnstileError('Por favor, complete el desafío de seguridad');
+        setIsLoading(false);
         return;
       }
 
-      // If validation passes, submit the form
-      e.currentTarget.submit();
+      // Create form data with all fields including turnstile token
+      const formData = new FormData(e.currentTarget);
+      formData.append('cf-turnstile-response', turnstileToken);
+
+      // Submit to StaticForms
+      const response = await fetch('https://api.staticforms.xyz/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al enviar el formulario');
+      }
+
+      // Redirect on success
+      window.location.href = redirectUrl;
     } catch (error) {
       setTurnstileError('Error al enviar el formulario');
     } finally {
@@ -203,8 +218,6 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
           >
             <form 
-              action="https://api.staticforms.xyz/submit" 
-              method="POST" 
               className="space-y-6"
               onSubmit={handleSubmit}
             >
@@ -212,7 +225,7 @@ const Contact = () => {
               <input type="hidden" name="accessKey" value="ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c" />
               <input type="hidden" name="redirectTo" value={redirectUrl} />
               <input type="hidden" name="replyTo" value="@" />
-              <input type="hidden" name="subject" value="Nuevo mensaje de contacto - CypherShield Security" />
+              <input type="hidden" name="subject" value="Nuevo mensaje de contacto - CipherShield Security" />
 
               {/* Spam protection - hidden field */}
               <input
