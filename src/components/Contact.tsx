@@ -51,6 +51,7 @@ const Contact = () => {
   const [turnstileToken, setTurnstileToken] = useState('');
   const [turnstileError, setTurnstileError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [submitEndpoint, setSubmitEndpoint] = useState('https://api.staticforms.xyz/fake');
   const turnstileRef = useRef<HTMLDivElement>(null);
 
   // Set redirect URL after component mounts
@@ -82,15 +83,21 @@ const Contact = () => {
     const initTurnstile = () => {
       if (window.turnstile && turnstileRef.current) {
         window.turnstile.render(turnstileRef.current, {
-          sitekey: '0x4AAAAAAA3FMv6GZiqocMUxVwScNg3qIKw',
+          sitekey: '0x4AAAAAAA3FMtq4reckeIMT',
           theme: 'auto',
           callback: (token) => {
             setTurnstileToken(token);
             setTurnstileError(null);
+            setSubmitEndpoint('https://api.staticforms.xyz/submit');
           },
           'error-callback': () => {
             setTurnstileError('Error al verificar el desafío de seguridad');
             setTurnstileToken('');
+            setSubmitEndpoint('https://api.staticforms.xyz/fake');
+          },
+          'expired-callback': () => {
+            setTurnstileToken('');
+            setSubmitEndpoint('https://api.staticforms.xyz/fake');
           }
         });
       }
@@ -134,12 +141,10 @@ const Contact = () => {
         return;
       }
 
-      // Create form data with all fields including turnstile token
       const formData = new FormData(e.currentTarget);
       formData.append('cf-turnstile-response', turnstileToken);
 
-      // Submit to StaticForms
-      const response = await fetch('https://api.staticforms.xyz/submit', {
+      const response = await fetch(submitEndpoint, {
         method: 'POST',
         body: formData
       });
