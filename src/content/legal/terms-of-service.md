@@ -31,7 +31,7 @@ Al crear una cuenta con nosotros:
 
 ### 4. Propiedad Intelectual
 
-- Todo el contenido y materiales son propiedad de CypherShield Security o sus licenciantes
+- Todo el contenido y materiales son propiedad de CipherShield Security o sus licenciantes
 - No está permitido copiar, modificar o distribuir nuestro contenido sin autorización
 - Respetamos los derechos de propiedad intelectual de terceros
 

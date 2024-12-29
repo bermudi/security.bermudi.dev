@@ -10,7 +10,7 @@ image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format
 
 ### 1. Información de la Empresa
 
-- Nombre: CypherShield Security
+- Nombre: CipherShield Security
 - Domicilio social: Prolongación Constituyentes, Querétaro, CP 76246
 - Email: contacto@ciberseguridad.mx
 
@@ -22,7 +22,7 @@ Este aviso legal regula el uso del sitio web bermudi.dev, que la empresa pone a 
 
 #### 3.1 Titularidad
 
-- El sitio web, incluyendo su código fuente, diseños, logos, textos y gráficos es propiedad de CypherShield Security
+- El sitio web, incluyendo su código fuente, diseños, logos, textos y gráficos es propiedad de CipherShield Security
 - Todos los derechos están reservados
 - Cualquier uso no autorizado será perseguido legalmente
 
