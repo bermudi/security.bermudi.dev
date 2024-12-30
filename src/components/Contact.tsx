@@ -147,24 +147,33 @@ const Contact = () => {
         return;
       }
 
-      const form = e.currentTarget;
-      const formData = new FormData(form);
-
-      // Add the access key to the form data
-      formData.append('accessKey', 'ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c');
+      const formData = {
+        accessKey: 'ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c',
+        name: formState.name,
+        email: formState.email,
+        $company: formState.$company,
+        message: formState.message,
+        honeypot: formState.honeypot,
+        redirectTo: redirectUrl,
+        replyTo: '@',
+        subject: 'Nuevo mensaje de contacto - CipherShield Security',
+        'cf-turnstile-response': turnstileToken
+      };
 
       // Debug: Log all form data entries
       console.log('Form data entries:');
-      for (const [key, value] of formData.entries()) {
+      Object.entries(formData).forEach(([key, value]) => {
         console.log(`${key}: ${value}`);
-      }
-
-      formData.append('cf-turnstile-response', turnstileToken);
+      });
 
       console.log('Submitting to:', submitEndpoint);
       const response = await fetch(submitEndpoint, {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
 
       const responseText = await response.text();
