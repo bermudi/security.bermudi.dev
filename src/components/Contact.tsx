@@ -150,6 +150,9 @@ const Contact = () => {
       const form = e.currentTarget;
       const formData = new FormData(form);
 
+      // Add the access key to the form data
+      formData.append('accessKey', 'ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c');
+
       // Debug: Log all form data entries
       console.log('Form data entries:');
       for (const [key, value] of formData.entries()) {
@@ -254,7 +257,6 @@ const Contact = () => {
               onSubmit={handleSubmit}
             >
               {/* Required StaticForms fields */}
-              <input type="hidden" name="accessKey" value="ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c" />
               <input type="hidden" name="redirectTo" value={redirectUrl} />
               <input type="hidden" name="replyTo" value="@" />
               <input type="hidden" name="subject" value="Nuevo mensaje de contacto - CipherShield Security" />
