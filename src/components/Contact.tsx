@@ -88,7 +88,13 @@ const Contact = () => {
           callback: (token) => {
             setTurnstileToken(token);
             setTurnstileError(null);
-            setSubmitEndpoint('https://api.staticforms.xyz/submit');
+            const protocol = 'https:';
+            const domain = 'api.staticforms.xyz';
+            const basePath = '/';
+            const submitPath = 'submit';
+            const fakePath = 'fake';
+            const endpoint = `${protocol}//${domain}${basePath}${submitPath}`;
+            setSubmitEndpoint(endpoint);
           },
           'error-callback': () => {
             setTurnstileError('Error al verificar el desafío de seguridad');
@@ -141,22 +147,43 @@ const Contact = () => {
         return;
       }
 
-      const formData = new FormData(e.currentTarget);
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      // Debug: Log all form data entries
+      console.log('Form data entries:');
+      for (const [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      }
+
       formData.append('cf-turnstile-response', turnstileToken);
 
+      console.log('Submitting to:', submitEndpoint);
       const response = await fetch(submitEndpoint, {
         method: 'POST',
         body: formData
       });
 
+      const responseText = await response.text();
+      console.log('Response:', response.status, responseText);
+
+      try {
+        const jsonResponse = JSON.parse(responseText);
+        console.log('Parsed response:', jsonResponse);
+      } catch (e) {
+        console.log('Could not parse response as JSON');
+      }
+
       if (!response.ok) {
-        throw new Error('Error al enviar el formulario');
+        throw new Error(`Error ${response.status}: ${responseText}`);
       }
 
       // Redirect on success
       window.location.href = redirectUrl;
-    } catch (error) {
-      setTurnstileError('Error al enviar el formulario');
+    } catch (error: unknown) {
+      console.error('Form submission error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+      setTurnstileError(`Error al enviar el formulario: ${errorMessage}`);
     } finally {
       setIsLoading(false);
     }
